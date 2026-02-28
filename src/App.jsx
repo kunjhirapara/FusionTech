@@ -18,13 +18,19 @@ import Contact from "./pages/Contact";
 
 function App() {
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: "ease-in-out",
-      once: true,
-      offset: 100,
-    });
+    // Skip animations entirely if the user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (!prefersReducedMotion) {
+      AOS.init({
+        duration: 700,
+        easing: "ease-out",
+        once: true,
+        offset: 20,
+      });
+    }
   }, []);
 
   return (

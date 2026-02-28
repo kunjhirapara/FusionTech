@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import projectData from "../data/projects.json";
 
 function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
+  const previousFocusRef = useRef(null);
 
   const projects = Object.values(projectData);
 
@@ -18,6 +19,7 @@ function Portfolio() {
       : projects.filter((project) => project.filterCategory === activeFilter);
 
   const openModal = (project) => {
+    previousFocusRef.current = document.activeElement;
     setSelectedProject(project);
     document.body.style.overflow = "hidden";
   };
@@ -25,7 +27,49 @@ function Portfolio() {
   const closeModal = () => {
     setSelectedProject(null);
     document.body.style.overflow = "";
+    // Restore focus to the element that triggered the modal
+    setTimeout(() => previousFocusRef.current?.focus(), 0);
   };
+
+  // Focus trap + Escape key handler for modal a11y
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const modal = document.getElementById("projectModal");
+    if (!modal) return;
+
+    const focusableSelectors =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableEls = Array.from(modal.querySelectorAll(focusableSelectors));
+    const first = focusableEls[0];
+    const last = focusableEls[focusableEls.length - 1];
+
+    // Move focus into the modal
+    first?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+        return;
+      }
+      if (e.key === "Tab") {
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last?.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first?.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject]);
 
   // Helper function to get icon based on project category
   const getProjectIcon = (category) => {
@@ -289,11 +333,20 @@ function Portfolio() {
 
       {/* Project Modal */}
       {selectedProject && (
-        <div className="modal" id="projectModal" style={{ display: "block" }}>
+        <div
+          className="modal"
+          id="projectModal"
+          style={{ display: "block" }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-project-title">
           <div className="modal-content">
-            <span className="close-modal" onClick={closeModal}>
+            <button
+              className="close-modal"
+              onClick={closeModal}
+              aria-label="Close modal">
               &times;
-            </span>
+            </button>
             <div className="modal-body">
               <div className="project-modal-header">
                 <div className="project-modal-image">
@@ -306,7 +359,7 @@ function Portfolio() {
                   <div className="project-modal-category">
                     {selectedProject.category}
                   </div>
-                  <h2 className="project-modal-title">
+                  <h2 id="modal-project-title" className="project-modal-title">
                     {selectedProject.title}
                   </h2>
                   <p className="project-modal-description">

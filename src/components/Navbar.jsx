@@ -35,6 +35,19 @@ function Navbar() {
     };
   }, [lastScrollY]);
 
+  // Close mobile menu and release scroll lock when viewport widens past 768px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+        document.body.style.overflow = "";
+      }
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
