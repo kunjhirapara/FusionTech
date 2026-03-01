@@ -1,4 +1,13 @@
 import { Link } from "react-router-dom";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   return (
@@ -15,16 +24,16 @@ function Footer() {
             </p>
             <div className="social-links">
               <a href="#" className="social-link">
-                <i className="fab fa-linkedin"></i>
+                <FaLinkedin />
               </a>
               <a href="#" className="social-link">
-                <i className="fab fa-twitter"></i>
+                <FaXTwitter />
               </a>
               <a href="#" className="social-link">
-                <i className="fab fa-github"></i>
+                <FaGithub />
               </a>
               <a href="#" className="social-link">
-                <i className="fab fa-instagram"></i>
+                <FaInstagram />
               </a>
             </div>
           </div>
@@ -69,15 +78,15 @@ function Footer() {
             <h4>Contact</h4>
             <div className="contact-info">
               <div className="contact-item">
-                <i className="fas fa-envelope"></i>
+                <FaEnvelope />
                 <span>info@fusiontech.com</span>
               </div>
               <div className="contact-item">
-                <i className="fas fa-phone"></i>
+                <FaPhone />
                 <span>+1 (555) 123-4567</span>
               </div>
               <div className="contact-item">
-                <i className="fas fa-map-marker-alt"></i>
+                <FaMapMarkerAlt />
                 <span>123 Tech Street, Digital City</span>
               </div>
             </div>
@@ -88,8 +97,8 @@ function Footer() {
           <div className="footer-bottom-content">
             <p>&copy; 2025 FusionTech. All rights reserved.</p>
             <div className="footer-bottom-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/terms-of-service">Terms of Service</Link>
               <a href="#">Sitemap</a>
             </div>
           </div>

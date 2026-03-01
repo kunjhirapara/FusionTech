@@ -1,5 +1,36 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  FaRocket,
+  FaEye,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaAws,
+  FaDocker,
+  FaMicrochip,
+  FaChevronDown,
+  FaCode,
+  FaCloud,
+  FaMobileAlt,
+  FaShieldAlt,
+  FaChartLine,
+  FaCogs,
+  FaArrowRight,
+  FaCheckCircle,
+  FaVuejs,
+  FaAngular,
+  FaJsSquare,
+  FaJava,
+  FaPhp,
+  FaGitAlt,
+  FaLeaf,
+  FaDatabase,
+  FaMemory,
+  FaPhone,
+  FaFolderOpen,
+} from "react-icons/fa";
+import { SiKubernetes } from "react-icons/si";
 
 function Home() {
   const [stats, setStats] = useState({
@@ -55,11 +86,11 @@ function Home() {
             </p>
             <div className="hero-buttons">
               <Link to="/services" className="btn btn-primary">
-                <i className="fas fa-rocket"></i>
+                <FaRocket />
                 Our Services
               </Link>
               <Link to="/portfolio" className="btn btn-secondary">
-                <i className="fas fa-eye"></i>
+                <FaEye />
                 View Portfolio
               </Link>
             </div>
@@ -94,22 +125,22 @@ function Home() {
             data-aos-delay="200">
             <div className="tech-animation">
               <div className="floating-icon" style={{ "--delay": "0s" }}>
-                <i className="fab fa-react"></i>
+                <FaReact />
               </div>
               <div className="floating-icon" style={{ "--delay": "1s" }}>
-                <i className="fab fa-node-js"></i>
+                <FaNodeJs />
               </div>
               <div className="floating-icon" style={{ "--delay": "2s" }}>
-                <i className="fab fa-python"></i>
+                <FaPython />
               </div>
               <div className="floating-icon" style={{ "--delay": "3s" }}>
-                <i className="fab fa-aws"></i>
+                <FaAws />
               </div>
               <div className="floating-icon" style={{ "--delay": "4s" }}>
-                <i className="fab fa-docker"></i>
+                <FaDocker />
               </div>
               <div className="central-hub">
-                <i className="fas fa-microchip"></i>
+                <FaMicrochip />
               </div>
             </div>
           </div>
@@ -117,7 +148,7 @@ function Home() {
         <div className="scroll-indicator">
           <div className="scroll-down" data-aos="fade-up" data-aos-delay="800">
             <span>Scroll Down</span>
-            <i className="fas fa-chevron-down"></i>
+            <FaChevronDown />
           </div>
         </div>
       </section>
@@ -138,7 +169,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="100">
               <div className="service-icon">
-                <i className="fas fa-code"></i>
+                <FaCode />
               </div>
               <h3>Web Development</h3>
               <p>
@@ -146,7 +177,7 @@ function Home() {
                 responsive design principles.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
 
@@ -155,7 +186,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="200">
               <div className="service-icon">
-                <i className="fas fa-cloud"></i>
+                <FaCloud />
               </div>
               <h3>Cloud Solutions</h3>
               <p>
@@ -163,7 +194,7 @@ function Home() {
                 enhanced performance and security.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
 
@@ -172,7 +203,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="300">
               <div className="service-icon">
-                <i className="fas fa-mobile-alt"></i>
+                <FaMobileAlt />
               </div>
               <h3>Mobile Development</h3>
               <p>
@@ -180,7 +211,7 @@ function Home() {
                 Android platforms.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
 
@@ -189,7 +220,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="400">
               <div className="service-icon">
-                <i className="fas fa-shield-alt"></i>
+                <FaShieldAlt />
               </div>
               <h3>Cybersecurity</h3>
               <p>
@@ -197,7 +228,7 @@ function Home() {
                 and data.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
 
@@ -206,7 +237,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="500">
               <div className="service-icon">
-                <i className="fas fa-chart-line"></i>
+                <FaChartLine />
               </div>
               <h3>Data Analytics</h3>
               <p>
@@ -214,7 +245,7 @@ function Home() {
                 analytics and visualization.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
 
@@ -223,7 +254,7 @@ function Home() {
               data-aos="fade-up"
               data-aos-delay="600">
               <div className="service-icon">
-                <i className="fas fa-cogs"></i>
+                <FaCogs />
               </div>
               <h3>IT Consulting</h3>
               <p>
@@ -231,7 +262,7 @@ function Home() {
                 processes and efficiency.
               </p>
               <Link to="/services" className="service-link">
-                Learn More <i className="fas fa-arrow-right"></i>
+                Learn More <FaArrowRight />
               </Link>
             </div>
           </div>
@@ -253,7 +284,7 @@ function Home() {
               <div className="features-list">
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
+                    <FaCheckCircle />
                   </div>
                   <div className="feature-content">
                     <h4>Expert Team</h4>
@@ -266,7 +297,7 @@ function Home() {
 
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
+                    <FaCheckCircle />
                   </div>
                   <div className="feature-content">
                     <h4>24/7 Support</h4>
@@ -278,7 +309,7 @@ function Home() {
 
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
+                    <FaCheckCircle />
                   </div>
                   <div className="feature-content">
                     <h4>Scalable Solutions</h4>
@@ -290,7 +321,7 @@ function Home() {
 
                 <div className="feature-item">
                   <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
+                    <FaCheckCircle />
                   </div>
                   <div className="feature-content">
                     <h4>Proven Track Record</h4>
@@ -355,19 +386,19 @@ function Home() {
               <h3>Frontend</h3>
               <div className="tech-icons">
                 <div className="tech-icon" title="React">
-                  <i className="fab fa-react"></i>
+                  <FaReact />
                   <span>React</span>
                 </div>
                 <div className="tech-icon" title="Vue.js">
-                  <i className="fab fa-vuejs"></i>
+                  <FaVuejs />
                   <span>Vue.js</span>
                 </div>
                 <div className="tech-icon" title="Angular">
-                  <i className="fab fa-angular"></i>
+                  <FaAngular />
                   <span>Angular</span>
                 </div>
                 <div className="tech-icon" title="JavaScript">
-                  <i className="fab fa-js-square"></i>
+                  <FaJsSquare />
                   <span>JavaScript</span>
                 </div>
               </div>
@@ -380,19 +411,19 @@ function Home() {
               <h3>Backend</h3>
               <div className="tech-icons">
                 <div className="tech-icon" title="Node.js">
-                  <i className="fab fa-node-js"></i>
+                  <FaNodeJs />
                   <span>Node.js</span>
                 </div>
                 <div className="tech-icon" title="Python">
-                  <i className="fab fa-python"></i>
+                  <FaPython />
                   <span>Python</span>
                 </div>
                 <div className="tech-icon" title="Java">
-                  <i className="fab fa-java"></i>
+                  <FaJava />
                   <span>Java</span>
                 </div>
                 <div className="tech-icon" title="PHP">
-                  <i className="fab fa-php"></i>
+                  <FaPhp />
                   <span>PHP</span>
                 </div>
               </div>
@@ -405,19 +436,19 @@ function Home() {
               <h3>Cloud & DevOps</h3>
               <div className="tech-icons">
                 <div className="tech-icon" title="AWS">
-                  <i className="fab fa-aws"></i>
+                  <FaAws />
                   <span>AWS</span>
                 </div>
                 <div className="tech-icon" title="Docker">
-                  <i className="fab fa-docker"></i>
+                  <FaDocker />
                   <span>Docker</span>
                 </div>
                 <div className="tech-icon" title="Kubernetes">
-                  <i className="fas fa-dharmachakra"></i>
+                  <SiKubernetes />
                   <span>Kubernetes</span>
                 </div>
                 <div className="tech-icon" title="Git">
-                  <i className="fab fa-git-alt"></i>
+                  <FaGitAlt />
                   <span>Git</span>
                 </div>
               </div>
@@ -430,19 +461,19 @@ function Home() {
               <h3>Database</h3>
               <div className="tech-icons">
                 <div className="tech-icon" title="MongoDB">
-                  <i className="fas fa-leaf"></i>
+                  <FaLeaf />
                   <span>MongoDB</span>
                 </div>
                 <div className="tech-icon" title="PostgreSQL">
-                  <i className="fas fa-database"></i>
+                  <FaDatabase />
                   <span>PostgreSQL</span>
                 </div>
                 <div className="tech-icon" title="MySQL">
-                  <i className="fas fa-database"></i>
+                  <FaDatabase />
                   <span>MySQL</span>
                 </div>
                 <div className="tech-icon" title="Redis">
-                  <i className="fas fa-memory"></i>
+                  <FaMemory />
                   <span>Redis</span>
                 </div>
               </div>
@@ -462,11 +493,11 @@ function Home() {
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
-                <i className="fas fa-phone"></i>
+                <FaPhone />
                 Get In Touch
               </Link>
               <Link to="/portfolio" className="btn btn-secondary">
-                <i className="fas fa-folder-open"></i>
+                <FaFolderOpen />
                 View Our Work
               </Link>
             </div>

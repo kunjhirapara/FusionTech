@@ -1,4 +1,29 @@
 import { Link } from "react-router-dom";
+import { HiShieldCheck } from "react-icons/hi";
+import {
+  FaBullseye,
+  FaEye,
+  FaLightbulb,
+  FaUsers,
+  FaTrophy,
+  FaSeedling,
+  FaHandshake,
+  FaUser,
+  FaLinkedin,
+  FaGithub,
+  FaDribbble,
+  FaMedal,
+  FaStar,
+  FaCrown,
+  FaProjectDiagram,
+  FaGlobe,
+  FaClock,
+  FaHeadset,
+  FaPercentage,
+  FaPhone,
+  FaCogs,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function About() {
   return (
@@ -98,7 +123,7 @@ function About() {
           <div className="mission-vision-grid">
             <div className="mission-card" data-aos="fade-up">
               <div className="card-icon">
-                <i className="fas fa-bullseye"></i>
+                <FaBullseye />
               </div>
               <h3>Our Mission</h3>
               <p>
@@ -113,7 +138,7 @@ function About() {
               data-aos="fade-up"
               data-aos-delay="200">
               <div className="card-icon">
-                <i className="fas fa-eye"></i>
+                <FaEye />
               </div>
               <h3>Our Vision</h3>
               <p>
@@ -139,7 +164,7 @@ function About() {
           <div className="values-grid">
             <div className="value-item" data-aos="fade-up" data-aos-delay="100">
               <div className="value-icon">
-                <i className="fas fa-lightbulb"></i>
+                <FaLightbulb />
               </div>
               <h4>Innovation</h4>
               <p>
@@ -150,7 +175,7 @@ function About() {
 
             <div className="value-item" data-aos="fade-up" data-aos-delay="200">
               <div className="value-icon">
-                <i className="fas fa-shield-check"></i>
+                <HiShieldCheck size={28} />
               </div>
               <h4>Integrity</h4>
               <p>
@@ -161,7 +186,7 @@ function About() {
 
             <div className="value-item" data-aos="fade-up" data-aos-delay="300">
               <div className="value-icon">
-                <i className="fas fa-users"></i>
+                <FaUsers />
               </div>
               <h4>Collaboration</h4>
               <p>
@@ -172,7 +197,7 @@ function About() {
 
             <div className="value-item" data-aos="fade-up" data-aos-delay="400">
               <div className="value-icon">
-                <i className="fas fa-trophy"></i>
+                <FaTrophy />
               </div>
               <h4>Excellence</h4>
               <p>
@@ -183,7 +208,7 @@ function About() {
 
             <div className="value-item" data-aos="fade-up" data-aos-delay="500">
               <div className="value-icon">
-                <i className="fas fa-seedling"></i>
+                <FaSeedling />
               </div>
               <h4>Growth</h4>
               <p>
@@ -194,7 +219,7 @@ function About() {
 
             <div className="value-item" data-aos="fade-up" data-aos-delay="600">
               <div className="value-icon">
-                <i className="fas fa-handshake"></i>
+                <FaHandshake />
               </div>
               <h4>Trust</h4>
               <p>
@@ -223,14 +248,14 @@ function About() {
               data-aos-delay="100">
               <div className="member-photo">
                 <div className="photo-placeholder">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="social-links">
                   <a href="#" className="social-link">
-                    <i className="fab fa-linkedin"></i>
+                    <FaLinkedin />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-twitter"></i>
+                    <FaXTwitter />
                   </a>
                 </div>
               </div>
@@ -250,14 +275,14 @@ function About() {
               data-aos-delay="200">
               <div className="member-photo">
                 <div className="photo-placeholder">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="social-links">
                   <a href="#" className="social-link">
-                    <i className="fab fa-linkedin"></i>
+                    <FaLinkedin />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-github"></i>
+                    <FaGithub />
                   </a>
                 </div>
               </div>
@@ -277,14 +302,14 @@ function About() {
               data-aos-delay="300">
               <div className="member-photo">
                 <div className="photo-placeholder">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="social-links">
                   <a href="#" className="social-link">
-                    <i className="fab fa-linkedin"></i>
+                    <FaLinkedin />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-twitter"></i>
+                    <FaXTwitter />
                   </a>
                 </div>
               </div>
@@ -304,14 +329,14 @@ function About() {
               data-aos-delay="400">
               <div className="member-photo">
                 <div className="photo-placeholder">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="social-links">
                   <a href="#" className="social-link">
-                    <i className="fab fa-linkedin"></i>
+                    <FaLinkedin />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-dribbble"></i>
+                    <FaDribbble />
                   </a>
                 </div>
               </div>
@@ -341,7 +366,7 @@ function About() {
           <div className="awards-grid">
             <div className="award-item" data-aos="fade-up" data-aos-delay="100">
               <div className="award-icon">
-                <i className="fas fa-trophy"></i>
+                <FaTrophy />
               </div>
               <h4>Best IT Solutions Company 2023</h4>
               <p>Tech Excellence Awards</p>
@@ -349,7 +374,7 @@ function About() {
 
             <div className="award-item" data-aos="fade-up" data-aos-delay="200">
               <div className="award-icon">
-                <i className="fas fa-medal"></i>
+                <FaMedal />
               </div>
               <h4>Innovation in Cloud Services</h4>
               <p>Cloud Computing Awards 2022</p>
@@ -357,7 +382,7 @@ function About() {
 
             <div className="award-item" data-aos="fade-up" data-aos-delay="300">
               <div className="award-icon">
-                <i className="fas fa-star"></i>
+                <FaStar />
               </div>
               <h4>Client Satisfaction Excellence</h4>
               <p>Business Service Awards 2022</p>
@@ -365,7 +390,7 @@ function About() {
 
             <div className="award-item" data-aos="fade-up" data-aos-delay="400">
               <div className="award-icon">
-                <i className="fas fa-crown"></i>
+                <FaCrown />
               </div>
               <h4>Top Employer of the Year</h4>
               <p>Tech Industry Recognition 2021</p>
@@ -380,7 +405,7 @@ function About() {
           <div className="stats-grid">
             <div className="stat-item" data-aos="fade-up" data-aos-delay="100">
               <div className="stat-icon">
-                <i className="fas fa-project-diagram"></i>
+                <FaProjectDiagram />
               </div>
               <div className="stat-number">500+</div>
               <div className="stat-label">Projects Completed</div>
@@ -388,7 +413,7 @@ function About() {
 
             <div className="stat-item" data-aos="fade-up" data-aos-delay="200">
               <div className="stat-icon">
-                <i className="fas fa-users"></i>
+                <FaUsers />
               </div>
               <div className="stat-number">150+</div>
               <div className="stat-label">Happy Clients</div>
@@ -396,7 +421,7 @@ function About() {
 
             <div className="stat-item" data-aos="fade-up" data-aos-delay="300">
               <div className="stat-icon">
-                <i className="fas fa-globe"></i>
+                <FaGlobe />
               </div>
               <div className="stat-number">25+</div>
               <div className="stat-label">Countries Served</div>
@@ -404,7 +429,7 @@ function About() {
 
             <div className="stat-item" data-aos="fade-up" data-aos-delay="400">
               <div className="stat-icon">
-                <i className="fas fa-clock"></i>
+                <FaClock />
               </div>
               <div className="stat-number">8+</div>
               <div className="stat-label">Years Experience</div>
@@ -412,7 +437,7 @@ function About() {
 
             <div className="stat-item" data-aos="fade-up" data-aos-delay="500">
               <div className="stat-icon">
-                <i className="fas fa-headset"></i>
+                <FaHeadset />
               </div>
               <div className="stat-number">24/7</div>
               <div className="stat-label">Support Available</div>
@@ -420,7 +445,7 @@ function About() {
 
             <div className="stat-item" data-aos="fade-up" data-aos-delay="600">
               <div className="stat-icon">
-                <i className="fas fa-percentage"></i>
+                <FaPercentage />
               </div>
               <div className="stat-number">99%</div>
               <div className="stat-label">Client Satisfaction</div>
@@ -440,11 +465,11 @@ function About() {
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
-                <i className="fas fa-phone"></i>
+                <FaPhone />
                 Get In Touch
               </Link>
               <Link to="/services" className="btn btn-secondary">
-                <i className="fas fa-cogs"></i>
+                <FaCogs />
                 Our Services
               </Link>
             </div>

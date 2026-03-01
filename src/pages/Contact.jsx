@@ -1,5 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import {
+  FaCheckCircle,
+  FaSpinner,
+  FaPaperPlane,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+  FaComments,
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+  FaYoutube,
+  FaChevronDown,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -20,6 +35,29 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [visibleFaqs, setVisibleFaqs] = useState(new Set());
+  const faqRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.faqIndex);
+            setVisibleFaqs((prev) => new Set(prev).add(index));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    faqRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -216,7 +254,7 @@ function Contact() {
 
               {submitSuccess && (
                 <div className="success-message">
-                  <i className="fas fa-check-circle"></i>
+                  <FaCheckCircle />
                   <p>
                     Thank you! Your message has been sent successfully. We'll
                     get back to you soon.
@@ -377,20 +415,6 @@ function Contact() {
                   <label className="checkbox-label">
                     <input
                       type="checkbox"
-                      id="newsletter"
-                      name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleChange}
-                    />
-                    <span className="checkmark"></span>
-                    Subscribe to our newsletter for latest updates and insights
-                  </label>
-                </div>
-
-                <div className="form-group checkbox-group">
-                  <label className="checkbox-label">
-                    <input
-                      type="checkbox"
                       id="privacy"
                       name="privacy"
                       checked={formData.privacy}
@@ -398,8 +422,8 @@ function Contact() {
                       className={errors.privacy ? "error" : ""}
                     />
                     <span className="checkmark"></span>I agree to the{" "}
-                    <a href="#">Privacy Policy</a> and{" "}
-                    <a href="#">Terms of Service</a> *
+                    <Link to="/privacy-policy">Privacy Policy</Link> and{" "}
+                    <Link to="/terms-of-service">Terms of Service</Link> *
                   </label>
                   {errors.privacy && (
                     <div className="error-message">{errors.privacy}</div>
@@ -412,12 +436,12 @@ function Contact() {
                   disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
-                      <i className="fas fa-spinner fa-spin"></i>
+                      <FaSpinner className="fa-spin" />
                       Sending...
                     </>
                   ) : (
                     <>
-                      <i className="fas fa-paper-plane"></i>
+                      <FaPaperPlane />
                       Send Message
                     </>
                   )}
@@ -438,7 +462,7 @@ function Contact() {
               <div className="contact-methods">
                 <div className="contact-method">
                   <div className="method-icon">
-                    <i className="fas fa-map-marker-alt"></i>
+                    <FaMapMarkerAlt />
                   </div>
                   <div className="method-content">
                     <h4>Visit Our Office</h4>
@@ -455,7 +479,7 @@ function Contact() {
 
                 <div className="contact-method">
                   <div className="method-icon">
-                    <i className="fas fa-phone"></i>
+                    <FaPhone />
                   </div>
                   <div className="method-content">
                     <h4>Call Us</h4>
@@ -472,7 +496,7 @@ function Contact() {
 
                 <div className="contact-method">
                   <div className="method-icon">
-                    <i className="fas fa-envelope"></i>
+                    <FaEnvelope />
                   </div>
                   <div className="method-content">
                     <h4>Email Us</h4>
@@ -491,7 +515,7 @@ function Contact() {
 
                 <div className="contact-method">
                   <div className="method-icon">
-                    <i className="fas fa-comments"></i>
+                    <FaComments />
                   </div>
                   <div className="method-content">
                     <h4>Live Chat</h4>
@@ -511,19 +535,19 @@ function Contact() {
                 <h4>Follow Us</h4>
                 <div className="social-links">
                   <a href="#" className="social-link">
-                    <i className="fab fa-linkedin"></i>
+                    <FaLinkedin />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-twitter"></i>
+                    <FaXTwitter />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-github"></i>
+                    <FaGithub />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-instagram"></i>
+                    <FaInstagram />
                   </a>
                   <a href="#" className="social-link">
-                    <i className="fab fa-youtube"></i>
+                    <FaYoutube />
                   </a>
                 </div>
               </div>
@@ -546,12 +570,13 @@ function Contact() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`faq-item ${openFaq === index ? "active" : ""}`}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}>
+                ref={(el) => (faqRefs.current[index] = el)}
+                data-faq-index={index}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`faq-item ${visibleFaqs.has(index) ? "faq-visible" : ""} ${openFaq === index ? "active" : ""}`}>
                 <div className="faq-question" onClick={() => toggleFaq(index)}>
                   <h4>{faq.question}</h4>
-                  <i className="fas fa-chevron-down"></i>
+                  <FaChevronDown />
                 </div>
                 <div className="faq-answer">
                   <p>{faq.answer}</p>

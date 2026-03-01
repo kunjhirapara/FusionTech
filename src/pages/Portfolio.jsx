@@ -1,6 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import projectData from "../data/projects.json";
+import {
+  FaShoppingCart,
+  FaMobileAlt,
+  FaCloud,
+  FaChartLine,
+  FaLaptopCode,
+  FaFolderOpen,
+  FaEye,
+  FaExternalLinkAlt,
+  FaSearch,
+  FaPaperPlane,
+  FaCogs,
+  FaQuoteLeft,
+  FaUser,
+  FaPhone,
+  FaImage,
+  FaClock,
+  FaUsers,
+  FaList,
+  FaCheck,
+} from "react-icons/fa";
 
 function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -74,13 +95,14 @@ function Portfolio() {
   // Helper function to get icon based on project category
   const getProjectIcon = (category) => {
     const iconMap = {
-      ecommerce: "fas fa-shopping-cart",
-      mobile: "fas fa-mobile-alt",
-      cloud: "fas fa-cloud",
-      analytics: "fas fa-chart-line",
-      web: "fas fa-laptop-code",
+      ecommerce: FaShoppingCart,
+      mobile: FaMobileAlt,
+      cloud: FaCloud,
+      analytics: FaChartLine,
+      web: FaLaptopCode,
     };
-    return iconMap[category] || "fas fa-folder-open";
+    const IconComponent = iconMap[category] || FaFolderOpen;
+    return <IconComponent />;
   };
 
   return (
@@ -156,17 +178,17 @@ function Portfolio() {
                 data-aos-delay={index * 100}>
                 <div className="project-image">
                   <div className="image-placeholder">
-                    <i className={getProjectIcon(project.filterCategory)}></i>
+                    {getProjectIcon(project.filterCategory)}
                   </div>
                   <div className="project-overlay">
                     <div className="project-actions">
                       <button
                         className="action-btn"
                         onClick={() => openModal(project)}>
-                        <i className="fas fa-eye"></i>
+                        <FaEye />
                       </button>
                       <a href="#" className="action-btn">
-                        <i className="fas fa-external-link-alt"></i>
+                        <FaExternalLinkAlt />
                       </a>
                     </div>
                   </div>
@@ -189,7 +211,7 @@ function Portfolio() {
 
           {filteredProjects.length === 0 && (
             <div className="no-projects">
-              <i className="fas fa-search"></i>
+              <FaSearch />
               <p>No projects found for this filter.</p>
             </div>
           )}
@@ -207,11 +229,11 @@ function Portfolio() {
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
-                <i className="fas fa-paper-plane"></i>
+                <FaPaperPlane />
                 Start Your Project
               </Link>
               <Link to="/services" className="btn btn-secondary">
-                <i className="fas fa-cogs"></i>
+                <FaCogs />
                 Our Services
               </Link>
             </div>
@@ -236,7 +258,7 @@ function Portfolio() {
               data-aos-delay="100">
               <div className="testimonial-content">
                 <div className="quote-icon">
-                  <i className="fas fa-quote-left"></i>
+                  <FaQuoteLeft />
                 </div>
                 <p>
                   "FusionTech transformed our e-commerce platform, resulting in
@@ -246,7 +268,7 @@ function Portfolio() {
               </div>
               <div className="testimonial-author">
                 <div className="author-avatar">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="author-info">
                   <h4>John Smith</h4>
@@ -261,7 +283,7 @@ function Portfolio() {
               data-aos-delay="200">
               <div className="testimonial-content">
                 <div className="quote-icon">
-                  <i className="fas fa-quote-left"></i>
+                  <FaQuoteLeft />
                 </div>
                 <p>
                   "The cloud migration project was flawless. FusionTech reduced
@@ -271,7 +293,7 @@ function Portfolio() {
               </div>
               <div className="testimonial-author">
                 <div className="author-avatar">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="author-info">
                   <h4>Sarah Johnson</h4>
@@ -286,7 +308,7 @@ function Portfolio() {
               data-aos-delay="300">
               <div className="testimonial-content">
                 <div className="quote-icon">
-                  <i className="fas fa-quote-left"></i>
+                  <FaQuoteLeft />
                 </div>
                 <p>
                   "Our mobile app developed by FusionTech has been downloaded
@@ -296,7 +318,7 @@ function Portfolio() {
               </div>
               <div className="testimonial-author">
                 <div className="author-avatar">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                 </div>
                 <div className="author-info">
                   <h4>Mike Davis</h4>
@@ -319,11 +341,11 @@ function Portfolio() {
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
-                <i className="fas fa-phone"></i>
+                <FaPhone />
                 Start Your Project
               </Link>
               <Link to="/services" className="btn btn-secondary">
-                <i className="fas fa-cogs"></i>
+                <FaCogs />
                 Our Services
               </Link>
             </div>
@@ -351,7 +373,7 @@ function Portfolio() {
               <div className="project-modal-header">
                 <div className="project-modal-image">
                   <div className="modal-image-placeholder">
-                    <i className="fas fa-image"></i>
+                    <FaImage />
                     <span>Project Screenshot</span>
                   </div>
                 </div>
@@ -367,19 +389,19 @@ function Portfolio() {
                   </p>
                   <div className="project-modal-meta">
                     <div className="meta-item">
-                      <i className="fas fa-user"></i>
+                      <FaUser />
                       <span>
                         <strong>Client:</strong> {selectedProject.client}
                       </span>
                     </div>
                     <div className="meta-item">
-                      <i className="fas fa-clock"></i>
+                      <FaClock />
                       <span>
                         <strong>Duration:</strong> {selectedProject.duration}
                       </span>
                     </div>
                     <div className="meta-item">
-                      <i className="fas fa-users"></i>
+                      <FaUsers />
                       <span>
                         <strong>Team Size:</strong> {selectedProject.team}
                       </span>
@@ -391,7 +413,7 @@ function Portfolio() {
               <div className="project-modal-content">
                 <div className="project-modal-section">
                   <h3>
-                    <i className="fas fa-cogs"></i> Technologies Used
+                    <FaCogs /> Technologies Used
                   </h3>
                   <div className="modal-tech-tags">
                     {selectedProject.technologies.map((tech, idx) => (
@@ -404,12 +426,12 @@ function Portfolio() {
 
                 <div className="project-modal-section">
                   <h3>
-                    <i className="fas fa-list"></i> Key Features
+                    <FaList /> Key Features
                   </h3>
                   <ul className="modal-feature-list">
                     {selectedProject.features.map((feature, idx) => (
                       <li key={idx}>
-                        <i className="fas fa-check"></i> {feature}
+                        <FaCheck /> {feature}
                       </li>
                     ))}
                   </ul>

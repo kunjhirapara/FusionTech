@@ -1,4 +1,16 @@
 import { Link } from "react-router-dom";
+import {
+  FaCode,
+  FaCheck,
+  FaLaptopCode,
+  FaCloud,
+  FaMobileAlt,
+  FaShieldAlt,
+  FaChartLine,
+  FaCogs,
+  FaPhone,
+  FaFolderOpen,
+} from "react-icons/fa";
 
 function Services() {
   return (
@@ -39,7 +51,7 @@ function Services() {
             <div className="service-content">
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-code"></i>
+                  <FaCode />
                 </div>
                 <h3>Web Development</h3>
                 <p className="service-description">
@@ -51,26 +63,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Custom Web Application
-                      Development
+                      <FaCheck /> Custom Web Application Development
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Responsive Design &
-                      Mobile Optimization
+                      <FaCheck /> Responsive Design & Mobile Optimization
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> E-commerce Solutions
+                      <FaCheck /> E-commerce Solutions
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Content Management
-                      Systems
+                      <FaCheck /> Content Management Systems
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> API Development &
-                      Integration
+                      <FaCheck /> API Development & Integration
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Performance Optimization
+                      <FaCheck /> Performance Optimization
                     </li>
                   </ul>
                 </div>
@@ -88,7 +96,7 @@ function Services() {
               </div>
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-laptop-code"></i>
+                  <FaLaptopCode />
                   <span>Web Development</span>
                 </div>
               </div>
@@ -100,13 +108,13 @@ function Services() {
             <div className="service-content">
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-cloud"></i>
+                  <FaCloud />
                   <span>Cloud Solutions</span>
                 </div>
               </div>
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-cloud"></i>
+                  <FaCloud />
                 </div>
                 <h3>Cloud Solutions</h3>
                 <p className="service-description">
@@ -118,26 +126,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Cloud Migration Strategy
+                      <FaCheck /> Cloud Migration Strategy
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Infrastructure as a
-                      Service (IaaS)
+                      <FaCheck /> Infrastructure as a Service (IaaS)
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Platform as a Service
-                      (PaaS)
+                      <FaCheck /> Platform as a Service (PaaS)
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Cloud Security &
-                      Compliance
+                      <FaCheck /> Cloud Security & Compliance
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Disaster Recovery
-                      Solutions
+                      <FaCheck /> Disaster Recovery Solutions
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> 24/7 Monitoring & Support
+                      <FaCheck /> 24/7 Monitoring & Support
                     </li>
                   </ul>
                 </div>
@@ -161,7 +165,7 @@ function Services() {
             <div className="service-content">
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-mobile-alt"></i>
+                  <FaMobileAlt />
                 </div>
                 <h3>Mobile Development</h3>
                 <p className="service-description">
@@ -173,23 +177,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Native iOS & Android Apps
+                      <FaCheck /> Native iOS & Android Apps
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Cross-Platform
-                      Development
+                      <FaCheck /> Cross-Platform Development
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> UI/UX Design
+                      <FaCheck /> UI/UX Design
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> App Store Optimization
+                      <FaCheck /> App Store Optimization
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Backend API Development
+                      <FaCheck /> Backend API Development
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> App Maintenance & Updates
+                      <FaCheck /> App Maintenance & Updates
                     </li>
                   </ul>
                 </div>
@@ -207,7 +210,7 @@ function Services() {
               </div>
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-mobile-alt"></i>
+                  <FaMobileAlt />
                   <span>Mobile Apps</span>
                 </div>
               </div>
@@ -219,13 +222,13 @@ function Services() {
             <div className="service-content">
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-shield-alt"></i>
+                  <FaShieldAlt />
                   <span>Cybersecurity</span>
                 </div>
               </div>
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-shield-alt"></i>
+                  <FaShieldAlt />
                 </div>
                 <h3>Cybersecurity</h3>
                 <p className="service-description">
@@ -237,26 +240,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Security Assessment &
-                      Audits
+                      <FaCheck /> Security Assessment & Audits
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Penetration Testing
+                      <FaCheck /> Penetration Testing
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Network Security
-                      Solutions
+                      <FaCheck /> Network Security Solutions
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Identity & Access
-                      Management
+                      <FaCheck /> Identity & Access Management
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Security Monitoring &
-                      Response
+                      <FaCheck /> Security Monitoring & Response
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Compliance Management
+                      <FaCheck /> Compliance Management
                     </li>
                   </ul>
                 </div>
@@ -280,7 +279,7 @@ function Services() {
             <div className="service-content">
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-chart-line"></i>
+                  <FaChartLine />
                 </div>
                 <h3>Data Analytics & BI</h3>
                 <p className="service-description">
@@ -292,24 +291,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Data Warehousing
-                      Solutions
+                      <FaCheck /> Data Warehousing Solutions
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Business Intelligence
-                      Dashboards
+                      <FaCheck /> Business Intelligence Dashboards
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Predictive Analytics
+                      <FaCheck /> Predictive Analytics
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Machine Learning Models
+                      <FaCheck /> Machine Learning Models
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Data Visualization
+                      <FaCheck /> Data Visualization
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Real-time Analytics
+                      <FaCheck /> Real-time Analytics
                     </li>
                   </ul>
                 </div>
@@ -327,7 +324,7 @@ function Services() {
               </div>
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-chart-line"></i>
+                  <FaChartLine />
                   <span>Data Analytics</span>
                 </div>
               </div>
@@ -339,13 +336,13 @@ function Services() {
             <div className="service-content">
               <div className="service-visual">
                 <div className="visual-placeholder">
-                  <i className="fas fa-cogs"></i>
+                  <FaCogs />
                   <span>IT Consulting</span>
                 </div>
               </div>
               <div className="service-info">
                 <div className="service-icon">
-                  <i className="fas fa-cogs"></i>
+                  <FaCogs />
                 </div>
                 <h3>IT Consulting</h3>
                 <p className="service-description">
@@ -357,26 +354,22 @@ function Services() {
                   <h4>What's Included:</h4>
                   <ul>
                     <li>
-                      <i className="fas fa-check"></i> Technology Strategy
-                      Planning
+                      <FaCheck /> Technology Strategy Planning
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Digital Transformation
-                      Roadmap
+                      <FaCheck /> Digital Transformation Roadmap
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> IT Infrastructure
-                      Assessment
+                      <FaCheck /> IT Infrastructure Assessment
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Process Optimization
+                      <FaCheck /> Process Optimization
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Technology Vendor
-                      Selection
+                      <FaCheck /> Technology Vendor Selection
                     </li>
                     <li>
-                      <i className="fas fa-check"></i> Change Management Support
+                      <FaCheck /> Change Management Support
                     </li>
                   </ul>
                 </div>
@@ -492,11 +485,11 @@ function Services() {
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn btn-primary">
-                <i className="fas fa-phone"></i>
+                <FaPhone />
                 Contact Us
               </Link>
               <Link to="/portfolio" className="btn btn-secondary">
-                <i className="fas fa-folder-open"></i>
+                <FaFolderOpen />
                 View Portfolio
               </Link>
             </div>
