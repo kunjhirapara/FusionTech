@@ -35,10 +35,10 @@ function Navbar() {
     };
   }, [lastScrollY]);
 
-  // Close mobile menu and release scroll lock when viewport widens past 768px
+  // Close mobile menu and release scroll lock when viewport widens past 1024px
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 1024) {
         setIsMobileMenuOpen(false);
         document.body.style.overflow = "";
       }

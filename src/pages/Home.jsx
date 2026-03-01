@@ -145,12 +145,6 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="scroll-indicator">
-          <div className="scroll-down" data-aos="fade-up" data-aos-delay="800">
-            <span>Scroll Down</span>
-            <FaChevronDown />
-          </div>
-        </div>
       </section>
 
       {/* Services Preview Section */}
