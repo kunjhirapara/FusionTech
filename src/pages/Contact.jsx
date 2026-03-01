@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import {
   FaCheckCircle,
@@ -17,22 +18,13 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    service: "",
-    budget: "",
-    timeline: "",
-    message: "",
-    newsletter: false,
-    privacy: false,
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({ mode: "onTouched" });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [visibleFaqs, setVisibleFaqs] = useState(new Set());
@@ -59,131 +51,12 @@ function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  const validateField = (name, value) => {
-    let error = "";
-
-    switch (name) {
-      case "firstName":
-      case "lastName":
-        if (!value.trim()) {
-          error = `${name === "firstName" ? "First" : "Last"} name is required`;
-        } else if (value.trim().length < 2) {
-          error = "Name must be at least 2 characters long";
-        }
-        break;
-
-      case "email":
-        if (!value.trim()) {
-          error = "Email is required";
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          error = "Please enter a valid email address";
-        }
-        break;
-
-      case "phone":
-        if (value && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) {
-          error = "Please enter a valid phone number";
-        }
-        break;
-
-      case "service":
-        if (!value) {
-          error = "Please select a service";
-        }
-        break;
-
-      case "message":
-        if (!value.trim()) {
-          error = "Please provide project details";
-        } else if (value.trim().length < 10) {
-          error = "Please provide more details (at least 10 characters)";
-        }
-        break;
-
-      case "privacy":
-        if (!value) {
-          error = "You must agree to the privacy policy";
-        }
-        break;
-
-      default:
-        break;
-    }
-
-    return error;
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    Object.keys(formData).forEach((key) => {
-      if (
-        key !== "phone" &&
-        key !== "company" &&
-        key !== "budget" &&
-        key !== "timeline" &&
-        key !== "newsletter"
-      ) {
-        const error = validateField(key, formData[key]);
-        if (error) {
-          newErrors[key] = error;
-        }
-      }
-    });
-
-    return newErrors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const newErrors = validateForm();
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        budget: "",
-        timeline: "",
-        message: "",
-        newsletter: false,
-        privacy: false,
-      });
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 2000);
+  const onSubmit = async () => {
+    // Simulate network request
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    reset();
+    setSubmitSuccess(true);
+    setTimeout(() => setSubmitSuccess(false), 5000);
   };
 
   const toggleFaq = (index) => {
@@ -265,20 +138,26 @@ function Contact() {
               <form
                 className="contact-form"
                 id="contactForm"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="firstName">First Name *</label>
                     <input
                       type="text"
                       id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
                       className={errors.firstName ? "error" : ""}
+                      {...register("firstName", {
+                        required: "First name is required",
+                        minLength: {
+                          value: 2,
+                          message: "Name must be at least 2 characters",
+                        },
+                      })}
                     />
                     {errors.firstName && (
-                      <div className="error-message">{errors.firstName}</div>
+                      <div className="error-message">
+                        {errors.firstName.message}
+                      </div>
                     )}
                   </div>
                   <div className="form-group">
@@ -286,13 +165,19 @@ function Contact() {
                     <input
                       type="text"
                       id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
                       className={errors.lastName ? "error" : ""}
+                      {...register("lastName", {
+                        required: "Last name is required",
+                        minLength: {
+                          value: 2,
+                          message: "Name must be at least 2 characters",
+                        },
+                      })}
                     />
                     {errors.lastName && (
-                      <div className="error-message">{errors.lastName}</div>
+                      <div className="error-message">
+                        {errors.lastName.message}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -303,13 +188,19 @@ function Contact() {
                     <input
                       type="email"
                       id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       className={errors.email ? "error" : ""}
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Please enter a valid email address",
+                        },
+                      })}
                     />
                     {errors.email && (
-                      <div className="error-message">{errors.email}</div>
+                      <div className="error-message">
+                        {errors.email.message}
+                      </div>
                     )}
                   </div>
                   <div className="form-group">
@@ -317,26 +208,25 @@ function Contact() {
                     <input
                       type="tel"
                       id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
                       className={errors.phone ? "error" : ""}
+                      {...register("phone", {
+                        pattern: {
+                          value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
+                          message: "Please enter a valid phone number",
+                        },
+                      })}
                     />
                     {errors.phone && (
-                      <div className="error-message">{errors.phone}</div>
+                      <div className="error-message">
+                        {errors.phone.message}
+                      </div>
                     )}
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="company">Company Name</label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                  />
+                  <input type="text" id="company" {...register("company")} />
                 </div>
 
                 <div className="form-row">
@@ -344,10 +234,10 @@ function Contact() {
                     <label htmlFor="service">Service Interested In *</label>
                     <select
                       id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className={errors.service ? "error" : ""}>
+                      className={errors.service ? "error" : ""}
+                      {...register("service", {
+                        required: "Please select a service",
+                      })}>
                       <option value="">Select a service</option>
                       <option value="web-development">Web Development</option>
                       <option value="mobile-development">
@@ -360,16 +250,14 @@ function Contact() {
                       <option value="other">Other</option>
                     </select>
                     {errors.service && (
-                      <div className="error-message">{errors.service}</div>
+                      <div className="error-message">
+                        {errors.service.message}
+                      </div>
                     )}
                   </div>
                   <div className="form-group">
                     <label htmlFor="budget">Project Budget</label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}>
+                    <select id="budget" {...register("budget")}>
                       <option value="">Select budget range</option>
                       <option value="under-5k">Under $5,000</option>
                       <option value="5k-10k">$5,000 - $10,000</option>
@@ -382,11 +270,7 @@ function Contact() {
 
                 <div className="form-group">
                   <label htmlFor="timeline">Project Timeline</label>
-                  <select
-                    id="timeline"
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleChange}>
+                  <select id="timeline" {...register("timeline")}>
                     <option value="">Select timeline</option>
                     <option value="asap">ASAP</option>
                     <option value="1-month">Within 1 month</option>
@@ -400,14 +284,21 @@ function Contact() {
                   <label htmlFor="message">Project Description *</label>
                   <textarea
                     id="message"
-                    name="message"
                     rows="5"
                     placeholder="Tell us about your project requirements, goals, and any specific features you need..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    className={errors.message ? "error" : ""}></textarea>
+                    className={errors.message ? "error" : ""}
+                    {...register("message", {
+                      required: "Please provide project details",
+                      minLength: {
+                        value: 10,
+                        message:
+                          "Please provide more details (at least 10 characters)",
+                      },
+                    })}></textarea>
                   {errors.message && (
-                    <div className="error-message">{errors.message}</div>
+                    <div className="error-message">
+                      {errors.message.message}
+                    </div>
                   )}
                 </div>
 
@@ -416,17 +307,19 @@ function Contact() {
                     <input
                       type="checkbox"
                       id="privacy"
-                      name="privacy"
-                      checked={formData.privacy}
-                      onChange={handleChange}
                       className={errors.privacy ? "error" : ""}
+                      {...register("privacy", {
+                        required: "You must agree to the privacy policy",
+                      })}
                     />
                     <span className="checkmark"></span>I agree to the{" "}
                     <Link to="/privacy-policy">Privacy Policy</Link> and{" "}
                     <Link to="/terms-of-service">Terms of Service</Link> *
                   </label>
                   {errors.privacy && (
-                    <div className="error-message">{errors.privacy}</div>
+                    <div className="error-message">
+                      {errors.privacy.message}
+                    </div>
                   )}
                 </div>
 
