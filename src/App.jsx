@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./styles/style.css";
+import "./styles/tailwind.css";
 
 // Components
 import Navbar from "./components/Navbar";

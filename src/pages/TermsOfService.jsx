@@ -1,799 +1,557 @@
 import { Link } from "react-router-dom";
 import {
+  FaInfoCircle,
   FaFileContract,
-  FaHandshake,
-  FaCode,
-  FaDollarSign,
-  FaShieldAlt,
-  FaUserLock,
+  FaUserCheck,
   FaBan,
-  FaBalanceScale,
+  FaCreditCard,
+  FaShieldAlt,
+  FaCopyright,
   FaExclamationTriangle,
-  FaEdit,
+  FaBalanceScale,
+  FaGavel,
+  FaSyncAlt,
+  FaHandshake,
+  FaGlobeAmericas,
   FaEnvelope,
-  FaGlobe,
-  FaCheckCircle,
-  FaClock,
-  FaLock,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaClipboardList,
+  FaServer,
 } from "react-icons/fa";
 
-function TermsOfService() {
-  const lastUpdated = "March 1, 2026";
-  const effectiveDate = "March 1, 2026";
+const sections = [
+  { id: "acceptance", title: "Acceptance of Terms", icon: FaFileContract },
+  { id: "services", title: "Services Description", icon: FaClipboardList },
+  { id: "accounts", title: "User Accounts", icon: FaUserCheck },
+  { id: "acceptable-use", title: "Acceptable Use", icon: FaHandshake },
+  { id: "prohibited", title: "Prohibited Activities", icon: FaBan },
+  { id: "payment", title: "Payment Terms", icon: FaCreditCard },
+  {
+    id: "intellectual-property",
+    title: "Intellectual Property",
+    icon: FaCopyright,
+  },
+  { id: "confidentiality", title: "Confidentiality", icon: FaShieldAlt },
+  {
+    id: "warranties",
+    title: "Warranties & Disclaimers",
+    icon: FaExclamationTriangle,
+  },
+  { id: "limitation", title: "Limitation of Liability", icon: FaBalanceScale },
+  { id: "indemnification", title: "Indemnification", icon: FaGavel },
+  { id: "termination", title: "Termination", icon: FaBan },
+  { id: "hosting", title: "Hosting & Uptime", icon: FaServer },
+  { id: "governing-law", title: "Governing Law", icon: FaGlobeAmericas },
+  { id: "changes", title: "Changes to Terms", icon: FaSyncAlt },
+  { id: "contact", title: "Contact Information", icon: FaEnvelope },
+];
 
+function TermsOfService() {
   return (
-    <div className="legal-page">
+    <div>
       {/* Page Header */}
-      <section className="page-header">
-        <div className="container">
-          <div className="page-header-content" data-aos="fade-up">
-            <h1>Terms of Service</h1>
-            <p>The agreement that governs your use of FusionTech services</p>
-            <nav className="breadcrumb">
-              <Link to="/">Home</Link> / <span>Terms of Service</span>
+      <section className="pt-30 pb-20 max-md:pt-24 max-md:pb-15 max-sm:pt-22 max-sm:pb-12 bg-slate-900 bg-grid-pattern text-center text-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-100 bg-[radial-gradient(ellipse,rgba(37,99,235,0.22)_0%,transparent_70%)] pointer-events-none" />
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div className="relative z-2" data-aos="fade-up">
+            <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-extrabold mb-4 text-white max-md:text-[2rem] max-sm:text-[1.75rem]">
+              Terms of Service
+            </h1>
+            <p className="text-xl mb-8 opacity-90">
+              Please read these terms carefully before using our services
+            </p>
+            <nav className="text-sm opacity-75">
+              <Link
+                to="/"
+                className="text-white no-underline transition-opacity duration-150 hover:opacity-100">
+                Home
+              </Link>{" "}
+              / <span>Terms of Service</span>
             </nav>
           </div>
         </div>
       </section>
 
-      {/* Legal Notice Bar */}
-      <section className="legal-notice-bar">
-        <div className="container">
-          <div className="legal-notice-content">
-            <FaFileContract />
-            <p>
-              <strong>Last Updated:</strong> {lastUpdated} &nbsp;|&nbsp;
-              <strong>Effective Date:</strong> {effectiveDate}
-            </p>
-          </div>
+      {/* Notice Bar */}
+      <div className="bg-slate-100 border-b border-slate-200 py-3">
+        <div className="max-w-300 mx-auto px-8 max-md:px-4 flex items-center gap-3 text-slate-600 text-[0.9rem]">
+          <FaInfoCircle className="text-primary shrink-0 text-lg" />
+          <span>
+            Last updated: January 15, 2025 &middot; Effective immediately
+          </span>
         </div>
-      </section>
+      </div>
 
-      {/* Main Content */}
-      <section className="legal-content-section">
-        <div className="container">
-          <div className="legal-layout">
-            {/* Table of Contents */}
-            <aside className="legal-toc" data-aos="fade-right">
-              <div className="toc-card">
-                <h3>Table of Contents</h3>
-                <ol className="toc-list">
-                  <li>
-                    <a href="#acceptance">Acceptance of Terms</a>
-                  </li>
-                  <li>
-                    <a href="#services">Services Description</a>
-                  </li>
-                  <li>
-                    <a href="#eligibility">Eligibility</a>
-                  </li>
-                  <li>
-                    <a href="#project-engagement">Project Engagements</a>
-                  </li>
-                  <li>
-                    <a href="#payment">Payment &amp; Billing</a>
-                  </li>
-                  <li>
-                    <a href="#intellectual-property">Intellectual Property</a>
-                  </li>
-                  <li>
-                    <a href="#confidentiality">Confidentiality</a>
-                  </li>
-                  <li>
-                    <a href="#warranties">Warranties &amp; Support</a>
-                  </li>
-                  <li>
-                    <a href="#liability">Limitation of Liability</a>
-                  </li>
-                  <li>
-                    <a href="#indemnification">Indemnification</a>
-                  </li>
-                  <li>
-                    <a href="#prohibited">Prohibited Use</a>
-                  </li>
-                  <li>
-                    <a href="#termination">Termination</a>
-                  </li>
-                  <li>
-                    <a href="#dispute">Dispute Resolution</a>
-                  </li>
-                  <li>
-                    <a href="#governing-law">Governing Law</a>
-                  </li>
-                  <li>
-                    <a href="#changes">Changes to Terms</a>
-                  </li>
-                  <li>
-                    <a href="#contact-legal">Contact Us</a>
-                  </li>
+      {/* Legal Content */}
+      <section className="pt-16 pb-20 max-sm:pt-8 max-sm:pb-12 bg-white">
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div className="grid grid-cols-[260px_1fr] max-lg:grid-cols-[220px_1fr] max-md:grid-cols-1 gap-12 max-lg:gap-8 items-start">
+            {/* TOC Sidebar */}
+            <aside className="sticky top-25 max-md:static">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <h3 className="text-base font-bold text-slate-900 mb-4 pb-3 border-b-2 border-primary">
+                  Table of Contents
+                </h3>
+                <ol className="list-decimal pl-5 flex flex-col gap-1.5">
+                  {sections.map((s) => (
+                    <li key={s.id}>
+                      <a
+                        href={`#${s.id}`}
+                        className="text-[0.85rem] text-slate-600 no-underline leading-snug transition-colors duration-150 hover:text-primary">
+                        {s.title}
+                      </a>
+                    </li>
+                  ))}
                 </ol>
               </div>
             </aside>
 
-            {/* Content Body */}
-            <main className="legal-body" data-aos="fade-left">
-              {/* Acceptance */}
-              <div id="acceptance" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
+            {/* Legal Body */}
+            <div>
+              {/* 1. Acceptance */}
+              <div id="acceptance" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
                     <FaFileContract />
                   </div>
-                  <h2>1. Acceptance of Terms</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    1. Acceptance of Terms
+                  </h2>
                 </div>
-                <p>
-                  Welcome to FusionTech. These Terms of Service ("Terms")
-                  constitute a legally binding agreement between you ("Client",
-                  "you", or "your") and FusionTech ("Company", "we", "our", or
-                  "us"), a technology solutions company with offices at 123 Tech
-                  Street, Digital City.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  By accessing or using FusionTech's website and services, you
+                  agree to be bound by these Terms of Service. If you do not
+                  agree to all the terms and conditions, you must not access or
+                  use our services.
                 </p>
-                <p>
-                  By accessing our website at <strong>fusiontech.com</strong>,
-                  submitting a project inquiry, signing a service proposal, or
-                  otherwise engaging our services, you confirm that you have
-                  read, understood, and agree to be bound by these Terms and our{" "}
-                  <Link to="/privacy-policy">Privacy Policy</Link>, which is
-                  incorporated herein by reference.
-                </p>
-                <div className="legal-callout">
-                  <FaExclamationTriangle />
-                  <p>
-                    <strong>
-                      Please read these Terms carefully before using our
-                      services.
-                    </strong>{" "}
-                    If you do not agree to these Terms, you may not access our
-                    website or engage our services.
+                <div className="flex items-start gap-3 bg-accent/6 border-l-4 border-primary rounded-r-lg py-4 px-5 my-5">
+                  <FaExclamationTriangle className="text-primary shrink-0 mt-0.5 text-lg" />
+                  <p className="m-0 text-[0.95rem] text-slate-700 leading-[1.7]">
+                    These terms constitute a legally binding agreement between
+                    you and FusionTech. Please read them carefully before
+                    proceeding.
                   </p>
                 </div>
               </div>
 
-              {/* Services Description */}
-              <div id="services" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaCode />
+              {/* 2. Services Description */}
+              <div id="services" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaClipboardList />
                   </div>
-                  <h2>2. Services Description</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    2. Services Description
+                  </h2>
                 </div>
-                <p>
-                  FusionTech provides professional IT solutions and consulting
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  FusionTech provides technology consulting and development
                   services, including but not limited to:
                 </p>
-                <ul className="legal-list">
-                  <li>
-                    <strong>Web Development:</strong> Custom web application
-                    development, responsive design, e-commerce solutions,
-                    content management systems, and API development.
-                  </li>
-                  <li>
-                    <strong>Mobile Application Development:</strong> Native iOS
-                    and Android applications, cross-platform solutions (React
-                    Native, Flutter), and mobile UI/UX design.
-                  </li>
-                  <li>
-                    <strong>Cloud Solutions:</strong> Cloud migration,
-                    infrastructure design and management, DevOps implementation,
-                    CI/CD pipelines, and managed cloud services on AWS, Azure,
-                    or GCP.
-                  </li>
-                  <li>
-                    <strong>Cybersecurity:</strong> Security audits, penetration
-                    testing, vulnerability assessments, compliance consulting
-                    (ISO 27001, SOC 2, GDPR), and security training.
-                  </li>
-                  <li>
-                    <strong>Data Analytics &amp; AI:</strong> Business
-                    intelligence dashboards, data engineering, machine learning
-                    model development, and predictive analytics.
-                  </li>
-                  <li>
-                    <strong>IT Consulting:</strong> Digital transformation
-                    strategy, technology roadmaps, architecture reviews, and
-                    CTO-as-a-Service.
-                  </li>
-                  <li>
-                    <strong>Ongoing Support &amp; Maintenance:</strong>{" "}
-                    Post-launch maintenance, performance optimization, security
-                    updates, and 24/7 technical support packages.
-                  </li>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    "Custom web and mobile application development",
+                    "Cloud infrastructure setup and management",
+                    "E-commerce platform development and optimization",
+                    "Data analytics and business intelligence solutions",
+                    "IT consulting and digital transformation services",
+                    "Ongoing maintenance and technical support",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
-                <p>
-                  Specific deliverables, timelines, and pricing for each
-                  engagement are defined in a Statement of Work (SOW) or Project
-                  Proposal signed by both parties. In the event of any conflict
-                  between these Terms and a signed SOW, the SOW shall prevail.
-                </p>
               </div>
 
-              {/* Eligibility */}
-              <div id="eligibility" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaCheckCircle />
+              {/* 3. User Accounts */}
+              <div id="accounts" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaUserCheck />
                   </div>
-                  <h2>3. Eligibility</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    3. User Accounts
+                  </h2>
                 </div>
-                <p>By using our services, you represent and warrant that:</p>
-                <ul className="legal-list">
-                  <li>
-                    You are at least 18 years old (or the age of legal majority
-                    in your jurisdiction).
-                  </li>
-                  <li>
-                    If acting on behalf of a company or organization, you have
-                    the legal authority to bind that entity to these Terms.
-                  </li>
-                  <li>
-                    You are not located in a country subject to applicable trade
-                    sanctions or export control restrictions.
-                  </li>
-                  <li>
-                    You have not been previously suspended or removed from any
-                    FusionTech service.
-                  </li>
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  When creating an account, you agree to:
+                </p>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    "Provide accurate, current, and complete information",
+                    "Maintain the security of your account credentials",
+                    "Notify us immediately of any unauthorized access",
+                    "Accept responsibility for all activities under your account",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Project Engagement */}
-              <div id="project-engagement" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
+              {/* 4. Acceptable Use */}
+              <div
+                id="acceptable-use"
+                className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
                     <FaHandshake />
                   </div>
-                  <h2>4. Project Engagements</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    4. Acceptable Use Policy
+                  </h2>
                 </div>
-
-                <h3>4.1 Project Initiation</h3>
-                <p>
-                  All project engagements begin with a discovery consultation
-                  during which we assess your requirements. Following this, we
-                  provide a detailed proposal outlining scope, deliverables,
-                  timelines, and pricing. Work begins only upon written approval
-                  (email confirmation or signed SOW) and receipt of any required
-                  deposit.
-                </p>
-
-                <h3>4.2 Client Responsibilities</h3>
-                <p>
-                  You agree to cooperate in good faith and in a timely manner,
-                  including:
-                </p>
-                <ul className="legal-list">
-                  <li>
-                    Providing accurate, complete, and timely information,
-                    content, and feedback.
-                  </li>
-                  <li>
-                    Designating a primary point of contact with authority to
-                    make project decisions.
-                  </li>
-                  <li>
-                    Responding to queries within the timeframes specified in the
-                    SOW (typically 3–5 business days).
-                  </li>
-                  <li>
-                    Ensuring all content and materials you provide are lawfully
-                    owned or licensed by you and do not infringe third-party
-                    rights.
-                  </li>
-                </ul>
-                <p>
-                  Delays caused by late client feedback may result in revised
-                  timelines and/or additional charges at our standard hourly
-                  rate.
-                </p>
-
-                <h3>4.3 Change Requests</h3>
-                <p>
-                  Any changes to agreed scope must be submitted in writing. We
-                  will assess the impact on timeline and cost and issue a Change
-                  Order for approval before proceeding. Change Orders become
-                  binding upon your written acceptance.
-                </p>
-
-                <h3>4.4 Project Delivery &amp; Acceptance</h3>
-                <p>
-                  Upon delivery of a milestone or final project, you have 10
-                  business days to review and either accept deliverables or
-                  submit documented defects. Silence after 10 business days
-                  constitutes acceptance. We will address documented defects
-                  that fall within the agreed spec at no additional charge;
-                  requests outside scope are treated as change requests.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  You agree to use our services only for lawful purposes and in
+                  accordance with these Terms. You agree not to use our services
+                  in any way that violates any applicable local, state,
+                  national, or international law or regulation.
                 </p>
               </div>
 
-              {/* Payment */}
-              <div id="payment" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaDollarSign />
+              {/* 5. Prohibited Activities */}
+              <div id="prohibited" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaBan />
                   </div>
-                  <h2>5. Payment &amp; Billing</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    5. Prohibited Activities
+                  </h2>
                 </div>
-
-                <h3>5.1 Fees</h3>
-                <p>
-                  All fees are specified in the relevant SOW or proposal. We
-                  offer multiple pricing models: fixed-price, time &amp;
-                  materials (T&amp;M), and monthly retainers. All prices are
-                  exclusive of applicable taxes (VAT, GST, etc.) unless stated
-                  otherwise.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  You are prohibited from:
                 </p>
-
-                <h3>5.2 Payment Schedule</h3>
-                <ul className="legal-list">
-                  <li>
-                    <strong>Fixed-Price Projects:</strong> Typically 40% deposit
-                    upon agreement, 30% at mid-project milestone, 30% upon final
-                    delivery.
-                  </li>
-                  <li>
-                    <strong>Time &amp; Materials:</strong> Invoiced bi-weekly or
-                    monthly based on hours logged and reported.
-                  </li>
-                  <li>
-                    <strong>Retainers:</strong> Invoiced in advance at the start
-                    of each month.
-                  </li>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    "Using the services for any illegal or unauthorized purpose",
+                    "Attempting to gain unauthorized access to our systems or networks",
+                    "Transmitting viruses, malware, or other harmful code",
+                    "Engaging in any activity that disrupts or interferes with our services",
+                    "Reverse engineering or decompiling any part of our software",
+                    "Using automated systems (bots, scrapers) without our written permission",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
+              </div>
 
-                <h3>5.3 Payment Terms</h3>
-                <p>
-                  Invoices are due within <strong>14 calendar days</strong> of
-                  issue date unless otherwise agreed in writing. We accept bank
-                  transfer (SWIFT/SEPA), major credit/debit cards, and PayPal.
+              {/* 6. Payment Terms */}
+              <div id="payment" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaCreditCard />
+                  </div>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    6. Payment Terms
+                  </h2>
+                </div>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    [
+                      "Project Estimates",
+                      "All quotes are valid for 30 days unless otherwise specified",
+                    ],
+                    [
+                      "Payment Schedule",
+                      "Payments are due as outlined in the project agreement (typically milestone-based)",
+                    ],
+                    [
+                      "Late Payments",
+                      "Invoices unpaid after 30 days may incur a 1.5% monthly late fee",
+                    ],
+                    [
+                      "Refund Policy",
+                      "Deposits are non-refundable; partial refunds may be issued for incomplete work",
+                    ],
+                  ].map(([strong, rest], i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      <strong className="text-slate-800">{strong}:</strong>{" "}
+                      {rest}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 7. Intellectual Property */}
+              <div
+                id="intellectual-property"
+                className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaCopyright />
+                  </div>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    7. Intellectual Property
+                  </h2>
+                </div>
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  All intellectual property rights in our website, services, and
+                  materials are owned by FusionTech or our licensors. Upon full
+                  payment, clients receive ownership of custom-developed
+                  deliverables as specified in the project agreement.
                 </p>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    "FusionTech retains rights to pre-existing code, frameworks, and tools",
+                    "Clients receive a perpetual, non-exclusive license for third-party components",
+                    "Portfolio usage rights are retained by FusionTech unless otherwise agreed",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <h3>5.4 Late Payments</h3>
-                <p>
-                  Overdue invoices are subject to a late payment fee of 1.5% per
-                  month (18% per annum) on any outstanding balance, in addition
-                  to any reasonable collection costs. We reserve the right to
-                  suspend active work on all projects until overdue balances are
-                  settled.
-                </p>
-
-                <h3>5.5 Refunds</h3>
-                <p>
-                  Deposits are non-refundable once work has commenced. Refunds
-                  for partially completed work will be prorated based on work
-                  delivered. Disputes regarding invoices must be raised in
-                  writing within 7 days of the invoice date.
+              {/* 8. Confidentiality */}
+              <div
+                id="confidentiality"
+                className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaShieldAlt />
+                  </div>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    8. Confidentiality
+                  </h2>
+                </div>
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  Both parties agree to maintain the confidentiality of
+                  proprietary information shared during the course of the
+                  engagement. This obligation survives the termination of these
+                  Terms for a period of two (2) years.
                 </p>
               </div>
 
-              {/* Intellectual Property */}
-              <div id="intellectual-property" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaLock />
+              {/* 9. Warranties & Disclaimers */}
+              <div id="warranties" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaExclamationTriangle />
                   </div>
-                  <h2>6. Intellectual Property</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    9. Warranties & Disclaimers
+                  </h2>
                 </div>
-
-                <h3>6.1 Client-Owned Deliverables</h3>
-                <p>
-                  Upon receipt of full payment, FusionTech assigns to you all
-                  intellectual property rights in the custom code, designs, and
-                  deliverables created exclusively for your project, excluding
-                  the items in Section 6.2.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  Our services are provided "as is" and "as available." While we
+                  strive for excellence, we do not warrant that our services
+                  will be uninterrupted, error-free, or free of harmful
+                  components.
                 </p>
-
-                <h3>6.2 FusionTech Retained IP</h3>
-                <p>We retain all rights to:</p>
-                <ul className="legal-list">
-                  <li>
-                    Pre-existing code, frameworks, libraries, tools, and
-                    methodologies developed independently of your project.
-                  </li>
-                  <li>
-                    General-purpose utilities and reusable components
-                    incorporated into your project (subject to a perpetual,
-                    royalty-free license granted to you below).
-                  </li>
-                  <li>
-                    Our branding, trademarks, service marks, logos, and trade
-                    secrets.
-                  </li>
-                </ul>
-                <p>
-                  With respect to any FusionTech pre-existing IP incorporated
-                  into your deliverables, we grant you a perpetual,
-                  non-exclusive, worldwide, royalty-free license to use such
-                  components as part of the delivered project only.
-                </p>
-
-                <h3>6.3 Third-Party Licenses</h3>
-                <p>
-                  Where open-source libraries or third-party components are
-                  included, they remain subject to their respective licenses
-                  (MIT, Apache 2.0, etc.), which we will disclose in the project
-                  documentation.
-                </p>
-
-                <h3>6.4 Portfolio Rights</h3>
-                <p>
-                  Unless you request confidentiality in writing, we reserve the
-                  right to reference your company name and describe the nature
-                  of our work together (without sharing proprietary details) in
-                  our case studies, portfolio, and marketing materials.
-                </p>
-              </div>
-
-              {/* Confidentiality */}
-              <div id="confidentiality" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaUserLock />
-                  </div>
-                  <h2>7. Confidentiality</h2>
-                </div>
-                <p>
-                  Each party may disclose confidential information to the other
-                  in connection with a project engagement. Both parties agree
-                  to:
-                </p>
-                <ul className="legal-list">
-                  <li>
-                    Keep confidential information strictly confidential and not
-                    disclose it to third parties without prior written consent.
-                  </li>
-                  <li>
-                    Use confidential information solely to perform obligations
-                    under these Terms.
-                  </li>
-                  <li>
-                    Limit access to confidential information to employees and
-                    contractors who have a need-to-know and are bound by
-                    equivalent confidentiality obligations.
-                  </li>
-                </ul>
-                <p>
-                  These obligations survive termination of the agreement for a
-                  period of <strong>3 years</strong>, except for trade secrets,
-                  which shall remain confidential indefinitely.
-                </p>
-                <p>
-                  Confidential information excludes information that is publicly
-                  known, independently developed, or required to be disclosed by
-                  law.
-                </p>
-                <div className="legal-callout">
-                  <FaShieldAlt />
-                  <p>
-                    Where a more comprehensive NDA is required, we are happy to
-                    execute a separate Non-Disclosure Agreement prior to sharing
-                    sensitive technical or business information.
+                <div className="flex items-start gap-3 bg-accent/6 border-l-4 border-primary rounded-r-lg py-4 px-5 my-5">
+                  <FaExclamationTriangle className="text-primary shrink-0 mt-0.5 text-lg" />
+                  <p className="m-0 text-[0.95rem] text-slate-700 leading-[1.7]">
+                    We provide a 30-day warranty period after project delivery
+                    for bug fixes related to agreed-upon specifications.
                   </p>
                 </div>
               </div>
 
-              {/* Warranties */}
-              <div id="warranties" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaCheckCircle />
-                  </div>
-                  <h2>8. Warranties &amp; Support</h2>
-                </div>
-
-                <h3>8.1 Our Warranties</h3>
-                <p>FusionTech warrants that:</p>
-                <ul className="legal-list">
-                  <li>
-                    Services will be performed in a professional and workmanlike
-                    manner by qualified personnel.
-                  </li>
-                  <li>
-                    Deliverables will substantially conform to the agreed
-                    specifications at the time of delivery.
-                  </li>
-                  <li>
-                    We have the right to grant the intellectual property rights
-                    set forth in Section 6.
-                  </li>
-                </ul>
-
-                <h3>8.2 Warranty Period</h3>
-                <p>
-                  All project deliverables include a{" "}
-                  <strong>90-day warranty period</strong> from the date of final
-                  acceptance. During this period, we will fix any defects that
-                  result from our work at no additional charge. This warranty
-                  does not cover issues arising from client modifications,
-                  third-party integrations, or changes in underlying platforms
-                  or APIs.
-                </p>
-
-                <h3>8.3 Post-Warranty Support</h3>
-                <p>
-                  After the warranty period, ongoing support is available under
-                  our maintenance retainer packages. Ad-hoc support outside a
-                  retainer is billed at our standard hourly rate.
-                </p>
-
-                <h3>8.4 Disclaimer of Other Warranties</h3>
-                <p>
-                  EXCEPT AS EXPRESSLY PROVIDED ABOVE, OUR SERVICES AND
-                  DELIVERABLES ARE PROVIDED "AS IS". WE DISCLAIM ALL OTHER
-                  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES
-                  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-                </p>
-              </div>
-
-              {/* Liability */}
-              <div id="liability" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
+              {/* 10. Limitation of Liability */}
+              <div id="limitation" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
                     <FaBalanceScale />
                   </div>
-                  <h2>9. Limitation of Liability</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    10. Limitation of Liability
+                  </h2>
                 </div>
-                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:</p>
-                <ul className="legal-list">
-                  <li>
-                    IN NO EVENT SHALL FUSIONTECH BE LIABLE FOR ANY INDIRECT,
-                    INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES,
-                    INCLUDING LOSS OF PROFITS, DATA, OR BUSINESS OPPORTUNITIES,
-                    EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-                  </li>
-                  <li>
-                    OUR TOTAL CUMULATIVE LIABILITY TO YOU ARISING OUT OF OR
-                    RELATED TO ANY PROJECT SHALL NOT EXCEED THE TOTAL FEES PAID
-                    BY YOU TO US FOR THAT PROJECT IN THE 12 MONTHS PRECEDING THE
-                    CLAIM.
-                  </li>
-                </ul>
-                <p>
-                  Some jurisdictions do not allow the exclusion or limitation of
-                  certain damages, so the above limitations may not apply to you
-                  in full.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  To the maximum extent permitted by law, FusionTech shall not
+                  be liable for any indirect, incidental, special,
+                  consequential, or punitive damages arising from your use of
+                  our services. Our total liability shall not exceed the amount
+                  paid by you for the specific service giving rise to the claim.
                 </p>
               </div>
 
-              {/* Indemnification */}
-              <div id="indemnification" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaShieldAlt />
+              {/* 11. Indemnification */}
+              <div
+                id="indemnification"
+                className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaGavel />
                   </div>
-                  <h2>10. Indemnification</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    11. Indemnification
+                  </h2>
                 </div>
-                <p>
+                <p className="text-slate-600 leading-[1.8] mb-3">
                   You agree to indemnify, defend, and hold harmless FusionTech
-                  and its directors, officers, employees, and agents from and
-                  against any claims, damages, losses, and costs (including
-                  reasonable legal fees) arising from:
+                  and its officers, directors, employees, and agents from any
+                  claims, damages, losses, or expenses arising from your use of
+                  our services or violation of these Terms.
                 </p>
-                <ul className="legal-list">
-                  <li>Your breach of these Terms.</li>
-                  <li>
-                    Any content, data, or materials you provide to us that
-                    infringes third-party intellectual property rights or
-                    violates applicable law.
-                  </li>
-                  <li>
-                    Your use of deliverables in a manner not authorized by these
-                    Terms or the applicable SOW.
-                  </li>
-                  <li>
-                    Violations of applicable laws or regulations by you or your
-                    end users.
-                  </li>
-                </ul>
               </div>
 
-              {/* Prohibited */}
-              <div id="prohibited" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
+              {/* 12. Termination */}
+              <div id="termination" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
                     <FaBan />
                   </div>
-                  <h2>11. Prohibited Use</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    12. Termination
+                  </h2>
                 </div>
-                <p>
-                  You may not use our services or deliverables for any of the
-                  following:
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  Either party may terminate these Terms with 30 days' written
+                  notice. Upon termination:
                 </p>
-                <ul className="legal-list">
-                  <li>
-                    Any unlawful purpose, or in violation of any applicable
-                    local, national, or international law or regulation.
-                  </li>
-                  <li>
-                    Developing, deploying, or hosting illegal content —
-                    including malware, phishing platforms, or content that
-                    promotes violence, terrorism, or exploitation.
-                  </li>
-                  <li>
-                    Scraping, mining, or harvesting personal data in violation
-                    of applicable privacy laws.
-                  </li>
-                  <li>
-                    Circumventing or attempting to circumvent security features
-                    of any system.
-                  </li>
-                  <li>
-                    Reproducing, reselling, or sublicensing our proprietary
-                    tools, frameworks, or methodologies without written consent.
-                  </li>
-                  <li>
-                    Any activity that infringes on the intellectual property
-                    rights of FusionTech or any third party.
-                  </li>
+                <ul className="list-none flex flex-col gap-2.5 my-3">
+                  {[
+                    "All outstanding payments become immediately due",
+                    "Client receives all completed deliverables paid for to date",
+                    "Both parties must return or destroy confidential information",
+                    "Provisions regarding IP, confidentiality, and liability survive termination",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-slate-600 leading-[1.7] pl-[1.4rem] relative before:content-['•'] before:absolute before:left-0 before:text-primary before:font-bold">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
-                <p>
-                  We reserve the right to refuse or immediately terminate any
-                  engagement where we believe our services are being used for
-                  prohibited purposes, without liability and without refund of
-                  paid fees.
+              </div>
+
+              {/* 13. Hosting & Uptime */}
+              <div id="hosting" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaServer />
+                  </div>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    13. Hosting & Uptime
+                  </h2>
+                </div>
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  For clients using our hosting services, we target 99.9%
+                  uptime. Scheduled maintenance windows will be communicated at
+                  least 48 hours in advance. We are not liable for downtime
+                  caused by factors outside our reasonable control.
                 </p>
               </div>
 
-              {/* Termination */}
-              <div id="termination" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaClock />
+              {/* 14. Governing Law */}
+              <div
+                id="governing-law"
+                className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaGlobeAmericas />
                   </div>
-                  <h2>12. Termination</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    14. Governing Law
+                  </h2>
                 </div>
-
-                <h3>12.1 Termination by Client</h3>
-                <p>
-                  You may terminate a project engagement at any time with 14
-                  days' written notice. You will be invoiced for all work
-                  completed up to the termination date at the contracted rate,
-                  plus any non-refundable third-party costs incurred on your
-                  behalf (e.g., domain registrations, software licenses).
-                </p>
-
-                <h3>12.2 Termination by FusionTech</h3>
-                <p>We may terminate or suspend services immediately if:</p>
-                <ul className="legal-list">
-                  <li>
-                    You breach any material term of these Terms or the
-                    applicable SOW and fail to cure such breach within 10
-                    business days of written notice.
-                  </li>
-                  <li>Payment is overdue by more than 30 days.</li>
-                  <li>You use our services for prohibited purposes.</li>
-                  <li>
-                    Continuation would require us to violate applicable law.
-                  </li>
-                </ul>
-
-                <h3>12.3 Effect of Termination</h3>
-                <p>
-                  Upon termination, we will deliver all completed work to you
-                  and all access credentials. Intellectual property ownership
-                  follows the payment status: ownership of deliverables
-                  transfers only upon settlement of all outstanding invoices.
-                  Sections 5, 6, 7, 9, 10, and 13 survive termination.
-                </p>
-              </div>
-
-              {/* Dispute Resolution */}
-              <div id="dispute" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaHandshake />
-                  </div>
-                  <h2>13. Dispute Resolution</h2>
-                </div>
-                <p>
-                  We value long-term relationships and prefer to resolve any
-                  disputes amicably. In the event of a dispute:
-                </p>
-                <ul className="legal-list">
-                  <li>
-                    <strong>Step 1 — Negotiation:</strong> The parties shall
-                    attempt to resolve the dispute through good-faith
-                    discussions within 30 days of written notice describing the
-                    dispute.
-                  </li>
-                  <li>
-                    <strong>Step 2 — Mediation:</strong> If negotiation fails,
-                    either party may refer the dispute to a mutually agreed
-                    mediator. Costs of mediation are shared equally.
-                  </li>
-                  <li>
-                    <strong>Step 3 — Arbitration:</strong> If mediation is
-                    unsuccessful, the dispute shall be finally resolved by
-                    binding arbitration under the rules of the American
-                    Arbitration Association (AAA), with proceedings conducted in
-                    English.
-                  </li>
-                </ul>
-                <p>
-                  Nothing in this section prevents either party from seeking
-                  urgent injunctive or equitable relief from a court of
-                  competent jurisdiction.
-                </p>
-              </div>
-
-              {/* Governing Law */}
-              <div id="governing-law" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaBalanceScale />
-                  </div>
-                  <h2>14. Governing Law</h2>
-                </div>
-                <p>
+                <p className="text-slate-600 leading-[1.8] mb-3">
                   These Terms shall be governed by and construed in accordance
-                  with the laws of the State of Delaware, United States, without
-                  regard to its conflict of law provisions. Subject to the
-                  dispute resolution process above, each party consents to
-                  exclusive jurisdiction of the courts located in Delaware.
-                </p>
-                <p>
-                  For clients located in the European Economic Area, applicable
-                  EU consumer protection laws may provide additional rights that
-                  cannot be waived by contract.
+                  with the laws of the State of California, without regard to
+                  conflict of law principles. Any disputes shall be resolved
+                  through binding arbitration in San Francisco, CA.
                 </p>
               </div>
 
-              {/* Changes */}
-              <div id="changes" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
-                    <FaEdit />
+              {/* 15. Changes to Terms */}
+              <div id="changes" className="py-8 border-b border-slate-100">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
+                    <FaSyncAlt />
                   </div>
-                  <h2>15. Changes to These Terms</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    15. Changes to Terms
+                  </h2>
                 </div>
-                <p>
-                  We reserve the right to update these Terms at any time. For
-                  material changes, we will provide at least{" "}
-                  <strong>30 days' notice</strong> via email to registered users
-                  or a prominent notice on our website before the new terms take
-                  effect.
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  We reserve the right to modify these Terms at any time.
+                  Changes will be effective upon posting to our website. Your
+                  continued use of our services after any modifications
+                  indicates acceptance of the updated Terms.
                 </p>
-                <p>
-                  Your continued use of our services or website after the
-                  effective date of the revised Terms constitutes your
-                  acceptance. For active project engagements, updated Terms will
-                  apply only upon renewal or execution of a new SOW unless a
-                  material law or regulation requires earlier adoption.
-                </p>
+                <div className="flex items-start gap-3 bg-accent/6 border-l-4 border-primary rounded-r-lg py-4 px-5 my-5">
+                  <FaInfoCircle className="text-primary shrink-0 mt-0.5 text-lg" />
+                  <p className="m-0 text-[0.95rem] text-slate-700 leading-[1.7]">
+                    We will notify registered users of significant changes via
+                    email at least 14 days before they take effect.
+                  </p>
+                </div>
               </div>
 
-              {/* Contact Legal */}
-              <div id="contact-legal" className="legal-section">
-                <div className="legal-section-header">
-                  <div className="legal-icon">
+              {/* 16. Contact Information */}
+              <div id="contact" className="py-8">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-10.5 h-10.5 bg-accent/10 rounded-[10px] flex items-center justify-center shrink-0 text-primary text-lg">
                     <FaEnvelope />
                   </div>
-                  <h2>16. Contact Us</h2>
+                  <h2 className="text-[1.4rem] font-bold text-slate-900 m-0">
+                    16. Contact Information
+                  </h2>
                 </div>
-                <p>
-                  For legal inquiries, contract matters, or questions about
-                  these Terms, please contact our legal team:
+                <p className="text-slate-600 leading-[1.8] mb-3">
+                  For questions or concerns about these Terms of Service, please
+                  contact us:
                 </p>
-                <div className="legal-contact-box">
-                  <div className="legal-contact-item">
-                    <strong>FusionTech — Legal Department</strong>
-                  </div>
-                  <div className="legal-contact-item">
-                    <FaEnvelope />{" "}
-                    <a href="mailto:legal@fusiontech.com">
-                      legal@fusiontech.com
-                    </a>
-                  </div>
-                  <div className="legal-contact-item">
-                    <FaGlobe /> <span>123 Tech Street, Digital City</span>
-                  </div>
-                  <div className="legal-contact-item">
-                    <span>+1 (555) 123-4567</span>
-                  </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 flex flex-col gap-2.5 mt-4">
+                  {[
+                    {
+                      icon: FaEnvelope,
+                      label: "Email:",
+                      val: "legal@fusiontech.com",
+                      href: "mailto:legal@fusiontech.com",
+                    },
+                    {
+                      icon: FaPhone,
+                      label: "Phone:",
+                      val: "+1 (555) 123-4567",
+                      href: "tel:+15551234567",
+                    },
+                    {
+                      icon: FaMapMarkerAlt,
+                      label: "Address:",
+                      val: "123 Innovation Drive, San Francisco, CA 94105",
+                      href: null,
+                    },
+                  ].map((c) => (
+                    <div
+                      key={c.label}
+                      className="flex items-center gap-2.5 text-slate-700 text-[0.95rem]">
+                      <c.icon className="text-primary shrink-0" />
+                      <span>
+                        {c.label}{" "}
+                        {c.href ? (
+                          <a
+                            href={c.href}
+                            className="text-primary no-underline hover:underline">
+                            {c.val}
+                          </a>
+                        ) : (
+                          c.val
+                        )}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                <p style={{ marginTop: "1.5rem" }}>
-                  For general inquiries, please use our{" "}
-                  <Link to="/contact">contact form</Link>.
-                </p>
               </div>
-            </main>
+            </div>
           </div>
         </div>
       </section>

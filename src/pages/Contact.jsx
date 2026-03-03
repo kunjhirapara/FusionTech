@@ -1,19 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import {
-  FaCheckCircle,
-  FaSpinner,
-  FaPaperPlane,
-  FaMapMarkerAlt,
-  FaPhone,
   FaEnvelope,
-  FaComments,
-  FaLinkedin,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaLinkedinIn,
   FaGithub,
-  FaInstagram,
-  FaYoutube,
   FaChevronDown,
+  FaPaperPlane,
+  FaCogs,
+  FaExternalLinkAlt,
+  FaSpinner,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -21,11 +19,11 @@ function Contact() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isSubmitting },
-  } = useForm({ mode: "onTouched" });
-
+    reset,
+  } = useForm();
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
   const [openFaq, setOpenFaq] = useState(null);
   const [visibleFaqs, setVisibleFaqs] = useState(new Set());
   const faqRefs = useRef([]);
@@ -35,413 +33,361 @@ function Contact() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.faqIndex);
-            setVisibleFaqs((prev) => new Set(prev).add(index));
+            setVisibleFaqs((prev) =>
+              new Set(prev).add(entry.target.dataset.faqIndex),
+            );
             observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.15 },
     );
-
     faqRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
-  const onSubmit = async () => {
-    // Simulate network request
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    reset();
+  const onSubmit = async (data) => {
+    await new Promise((r) => setTimeout(r, 1500));
+    console.log("Form data:", data);
     setSubmitSuccess(true);
+    reset();
     setTimeout(() => setSubmitSuccess(false), 5000);
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
   };
 
   const faqs = [
     {
-      question: "How long does a typical project take?",
-      answer:
-        "Project timelines vary based on complexity and scope. A simple website might take 4-6 weeks, while complex applications can take 3-6 months or more. We provide detailed timeline estimates during the initial consultation.",
+      q: "How quickly do you respond to inquiries?",
+      a: "We typically respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our direct line.",
     },
     {
-      question: "What is your pricing structure?",
-      answer:
-        "We offer flexible pricing models including fixed-price projects, time and materials, and dedicated team arrangements. Pricing depends on project scope, technology stack, and timeline. Contact us for a customized quote.",
+      q: "Do you offer free consultations?",
+      a: "Yes! We offer a free 30-minute consultation to discuss your project requirements and provide initial recommendations.",
     },
     {
-      question: "Do you provide ongoing support and maintenance?",
-      answer:
-        "Yes! We offer comprehensive support and maintenance packages including bug fixes, security updates, feature enhancements, and 24/7 technical support. All our projects come with a warranty period.",
+      q: "What is your typical project timeline?",
+      a: "Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications may take 3-6 months. We'll provide a detailed timeline during our consultation.",
     },
     {
-      question: "Can you work with our existing technology stack?",
-      answer:
-        "Absolutely! Our team has expertise in a wide range of technologies and frameworks. We can integrate with your existing systems or suggest modern alternatives if needed.",
+      q: "Do you provide ongoing support?",
+      a: "Absolutely. We offer various support and maintenance packages to ensure your project continues to perform optimally after launch.",
     },
     {
-      question: "How do you ensure project quality?",
-      answer:
-        "We follow industry best practices including code reviews, automated testing, continuous integration, and quality assurance processes. Every project undergoes rigorous testing before deployment.",
-    },
-    {
-      question: "What industries do you serve?",
-      answer:
-        "We have experience across various industries including healthcare, finance, e-commerce, education, logistics, and more. Our solutions are tailored to meet industry-specific requirements and compliance standards.",
+      q: "What technologies do you specialize in?",
+      a: "We specialize in React, Node.js, Python, AWS, and modern cloud technologies. Our team stays current with the latest industry trends and tools.",
     },
   ];
 
   return (
-    <div className="contact-page">
+    <div>
       {/* Page Header */}
-      <section className="page-header">
-        <div className="container">
-          <div className="page-header-content" data-aos="fade-up">
-            <h1>Contact Us</h1>
-            <p>Let's discuss your next project and how we can help</p>
-            <nav className="breadcrumb">
-              <Link to="/">Home</Link> / <span>Contact</span>
+      <section className="pt-30 pb-20 max-md:pt-24 max-md:pb-15 max-sm:pt-22 max-sm:pb-12 bg-slate-900 bg-grid-pattern text-center text-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-100 bg-[radial-gradient(ellipse,rgba(37,99,235,0.22)_0%,transparent_70%)] pointer-events-none" />
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div className="relative z-2" data-aos="fade-up">
+            <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-extrabold mb-4 text-white max-md:text-[2rem] max-sm:text-[1.75rem]">
+              Contact Us
+            </h1>
+            <p className="text-xl mb-8 opacity-90">
+              Let's start a conversation about your next project
+            </p>
+            <nav className="text-sm opacity-75">
+              <Link
+                to="/"
+                className="text-white no-underline transition-opacity duration-150 hover:opacity-100">
+                Home
+              </Link>{" "}
+              / <span>Contact</span>
             </nav>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact-section">
-        <div className="container">
-          <div className="contact-wrapper">
-            {/* Contact Form */}
-            <div className="contact-form-section" data-aos="fade-right">
-              <div className="form-header">
-                <h2>Get In Touch</h2>
-                <p>
-                  Ready to start your project? Fill out the form below and we'll
-                  get back to you within 24 hours.
+      {/* Contact Form + Sidebar */}
+      <section className="py-22 bg-slate-50">
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div
+            className="grid grid-cols-2 max-lg:grid-cols-1 gap-16 max-lg:gap-8"
+            data-aos="fade-up">
+            {/* Form */}
+            <div>
+              <div className="mb-8">
+                <h2 className="text-[1.75rem] font-bold mb-2.5 tracking-tight text-slate-900">
+                  Send Us a Message
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
+                  Fill out the form below and we'll get back to you within 24
+                  hours.
                 </p>
               </div>
 
-              {submitSuccess && (
-                <div className="success-message">
-                  <FaCheckCircle />
-                  <p>
-                    Thank you! Your message has been sent successfully. We'll
-                    get back to you soon.
-                  </p>
-                </div>
-              )}
-
               <form
-                className="contact-form"
-                id="contactForm"
-                onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="firstName">First Name *</label>
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col gap-6"
+                noValidate>
+                {/* Name + Email */}
+                <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                  <div className="flex flex-col">
+                    <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
-                      id="firstName"
-                      className={errors.firstName ? "error" : ""}
-                      {...register("firstName", {
-                        required: "First name is required",
-                        minLength: {
-                          value: 2,
-                          message: "Name must be at least 2 characters",
-                        },
+                      placeholder="John Doe"
+                      className={`px-4 py-3.5 border-[1.5px] rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)] ${errors.name ? "border-error" : "border-slate-200"}`}
+                      {...register("name", {
+                        required: "Full name is required",
                       })}
                     />
-                    {errors.firstName && (
-                      <div className="error-message">
-                        {errors.firstName.message}
-                      </div>
+                    {errors.name && (
+                      <span className="text-error text-sm mt-1">
+                        {errors.name.message}
+                      </span>
                     )}
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name *</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className={errors.lastName ? "error" : ""}
-                      {...register("lastName", {
-                        required: "Last name is required",
-                        minLength: {
-                          value: 2,
-                          message: "Name must be at least 2 characters",
-                        },
-                      })}
-                    />
-                    {errors.lastName && (
-                      <div className="error-message">
-                        {errors.lastName.message}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address *</label>
+                  <div className="flex flex-col">
+                    <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
-                      id="email"
-                      className={errors.email ? "error" : ""}
+                      placeholder="john@example.com"
+                      className={`px-4 py-3.5 border-[1.5px] rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)] ${errors.email ? "border-error" : "border-slate-200"}`}
                       {...register("email", {
                         required: "Email is required",
                         pattern: {
                           value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                          message: "Please enter a valid email address",
+                          message: "Invalid email",
                         },
                       })}
                     />
                     {errors.email && (
-                      <div className="error-message">
+                      <span className="text-error text-sm mt-1">
                         {errors.email.message}
-                      </div>
+                      </span>
                     )}
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
+                </div>
+
+                {/* Phone + Company */}
+                <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                  <div className="flex flex-col">
+                    <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
-                      id="phone"
-                      className={errors.phone ? "error" : ""}
-                      {...register("phone", {
-                        pattern: {
-                          value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
-                          message: "Please enter a valid phone number",
-                        },
-                      })}
+                      placeholder="+1 (555) 000-0000"
+                      className="px-4 py-3.5 border-[1.5px] border-slate-200 rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)]"
+                      {...register("phone")}
                     />
-                    {errors.phone && (
-                      <div className="error-message">
-                        {errors.phone.message}
-                      </div>
-                    )}
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Company Name"
+                      className="px-4 py-3.5 border-[1.5px] border-slate-200 rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)]"
+                      {...register("company")}
+                    />
                   </div>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="company">Company Name</label>
-                  <input type="text" id="company" {...register("company")} />
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="service">Service Interested In *</label>
-                    <select
-                      id="service"
-                      className={errors.service ? "error" : ""}
-                      {...register("service", {
-                        required: "Please select a service",
-                      })}>
-                      <option value="">Select a service</option>
-                      <option value="web-development">Web Development</option>
-                      <option value="mobile-development">
-                        Mobile Development
-                      </option>
-                      <option value="cloud-solutions">Cloud Solutions</option>
-                      <option value="cybersecurity">Cybersecurity</option>
-                      <option value="data-analytics">Data Analytics</option>
-                      <option value="it-consulting">IT Consulting</option>
-                      <option value="other">Other</option>
-                    </select>
-                    {errors.service && (
-                      <div className="error-message">
-                        {errors.service.message}
-                      </div>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="budget">Project Budget</label>
-                    <select id="budget" {...register("budget")}>
-                      <option value="">Select budget range</option>
-                      <option value="under-5k">Under $5,000</option>
-                      <option value="5k-10k">$5,000 - $10,000</option>
-                      <option value="10k-25k">$10,000 - $25,000</option>
-                      <option value="25k-50k">$25,000 - $50,000</option>
-                      <option value="50k-plus">$50,000+</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="timeline">Project Timeline</label>
-                  <select id="timeline" {...register("timeline")}>
-                    <option value="">Select timeline</option>
-                    <option value="asap">ASAP</option>
-                    <option value="1-month">Within 1 month</option>
-                    <option value="2-3-months">2-3 months</option>
-                    <option value="3-6-months">3-6 months</option>
-                    <option value="6-plus-months">6+ months</option>
+                {/* Service */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                    Service Interested In *
+                  </label>
+                  <select
+                    className={`px-4 py-3.5 border-[1.5px] rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)] ${errors.service ? "border-error" : "border-slate-200"}`}
+                    {...register("service", {
+                      required: "Please select a service",
+                    })}>
+                    <option value="">Select a service...</option>
+                    <option value="web">Web Development</option>
+                    <option value="mobile">Mobile App Development</option>
+                    <option value="cloud">Cloud Solutions</option>
+                    <option value="ecommerce">E-commerce Development</option>
+                    <option value="analytics">Data Analytics</option>
+                    <option value="consulting">IT Consulting</option>
                   </select>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="message">Project Description *</label>
-                  <textarea
-                    id="message"
-                    rows="5"
-                    placeholder="Tell us about your project requirements, goals, and any specific features you need..."
-                    className={errors.message ? "error" : ""}
-                    {...register("message", {
-                      required: "Please provide project details",
-                      minLength: {
-                        value: 10,
-                        message:
-                          "Please provide more details (at least 10 characters)",
-                      },
-                    })}></textarea>
-                  {errors.message && (
-                    <div className="error-message">
-                      {errors.message.message}
-                    </div>
+                  {errors.service && (
+                    <span className="text-error text-sm mt-1">
+                      {errors.service.message}
+                    </span>
                   )}
                 </div>
 
-                <div className="form-group checkbox-group">
-                  <label className="checkbox-label">
+                {/* Budget */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                    Budget Range
+                  </label>
+                  <select
+                    className="px-4 py-3.5 border-[1.5px] border-slate-200 rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 min-h-12 transition-all duration-150 focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)]"
+                    {...register("budget")}>
+                    <option value="">Select budget range...</option>
+                    <option value="5k-10k">$5,000 - $10,000</option>
+                    <option value="10k-25k">$10,000 - $25,000</option>
+                    <option value="25k-50k">$25,000 - $50,000</option>
+                    <option value="50k-100k">$50,000 - $100,000</option>
+                    <option value="100k+">$100,000+</option>
+                  </select>
+                </div>
+
+                {/* Message */}
+                <div className="flex flex-col">
+                  <label className="text-sm font-semibold text-slate-700 tracking-tight mb-1">
+                    Project Details *
+                  </label>
+                  <textarea
+                    rows="5"
+                    placeholder="Tell us about your project requirements, goals, and timeline..."
+                    className={`px-4 py-3.5 border-[1.5px] rounded-lg font-[inherit] text-[0.9375rem] bg-white text-slate-900 transition-all duration-150 resize-y focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(37,99,235,0.15)] ${errors.message ? "border-error" : "border-slate-200"}`}
+                    {...register("message", {
+                      required: "Please describe your project",
+                    })}
+                  />
+                  {errors.message && (
+                    <span className="text-error text-sm mt-1">
+                      {errors.message.message}
+                    </span>
+                  )}
+                </div>
+
+                {/* Privacy Agreement Checkbox */}
+                <div className="flex flex-col gap-1">
+                  <label className="flex items-center gap-2 cursor-pointer text-sm">
                     <input
                       type="checkbox"
-                      id="privacy"
-                      className={errors.privacy ? "error" : ""}
+                      className="w-4.5 h-4.5"
                       {...register("privacy", {
                         required: "You must agree to the privacy policy",
                       })}
                     />
-                    <span className="checkmark"></span>I agree to the{" "}
-                    <Link to="/privacy-policy">Privacy Policy</Link> and{" "}
-                    <Link to="/terms-of-service">Terms of Service</Link> *
+                    I agree to the{" "}
+                    <Link
+                      to="/privacy-policy"
+                      className="text-accent hover:underline">
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      to="/terms-of-service"
+                      className="text-accent hover:underline">
+                      Terms of Service
+                    </Link>{" "}
+                    *
                   </label>
                   {errors.privacy && (
-                    <div className="error-message">
+                    <span className="text-error text-sm mt-1">
                       {errors.privacy.message}
-                    </div>
+                    </span>
                   )}
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn btn-primary submit-btn"
-                  disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <FaSpinner className="fa-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <FaPaperPlane />
-                      Send Message
-                    </>
-                  )}
-                </button>
+                {/* Submit */}
+                <div className="self-start">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-2 px-7 py-3 text-[0.9375rem] font-semibold rounded-lg border-2 border-accent bg-accent text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)] transition-all duration-250 hover:bg-accent-dark hover:border-accent-dark hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer">
+                    {isSubmitting ? (
+                      <>
+                        <FaSpinner className="fa-spin" /> Sending...
+                      </>
+                    ) : (
+                      <>
+                        <FaPaperPlane /> Send Message
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {submitSuccess && (
+                  <div className="p-4 rounded-lg mt-4 bg-success/10 text-success border border-success">
+                    Thank you! Your message has been sent successfully. We'll
+                    get back to you within 24 hours.
+                  </div>
+                )}
               </form>
             </div>
 
-            {/* Contact Information */}
-            <div className="contact-info-section" data-aos="fade-left">
-              <div className="contact-info-header">
-                <h3>Let's Connect</h3>
-                <p>
-                  We're here to help you transform your business with
-                  technology.
+            {/* Contact Info Sidebar */}
+            <div className="bg-white p-10 max-md:p-6 rounded-xl border border-slate-200 shadow-sm self-start">
+              <div className="mb-12">
+                <h2 className="text-[1.75rem] font-bold mb-2.5 tracking-tight text-slate-900">
+                  Get in Touch
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
+                  We'd love to hear from you. Reach out through any of these
+                  channels.
                 </p>
               </div>
 
-              <div className="contact-methods">
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <FaMapMarkerAlt />
+              <div className="flex flex-col gap-8 mb-12">
+                {[
+                  {
+                    icon: FaEnvelope,
+                    title: "Email Us",
+                    text: "info@fusiontech.com",
+                    sub: "We reply within 24 hours",
+                    href: "mailto:info@fusiontech.com",
+                  },
+                  {
+                    icon: FaPhone,
+                    title: "Call Us",
+                    text: "+1 (555) 123-4567",
+                    sub: "Mon-Fri, 9am-6pm EST",
+                    href: "tel:+15551234567",
+                  },
+                  {
+                    icon: FaMapMarkerAlt,
+                    title: "Visit Us",
+                    text: "123 Innovation Drive",
+                    sub: "San Francisco, CA 94105",
+                    href: null,
+                  },
+                ].map((m) => (
+                  <div key={m.title} className="flex gap-4 items-start">
+                    <div className="w-11.5 h-11.5 bg-accent/10 rounded-[0.625rem] flex items-center justify-center shrink-0">
+                      <m.icon className="text-accent text-lg" />
+                    </div>
+                    <div>
+                      <h4 className="mb-2 text-slate-900">{m.title}</h4>
+                      <p className="text-slate-600 mb-2">{m.text}</p>
+                      <p className="text-slate-600 mb-2">{m.sub}</p>
+                      {m.href && (
+                        <a
+                          href={m.href}
+                          className="text-accent no-underline font-semibold text-sm inline-flex items-center gap-1 transition-opacity duration-150 hover:opacity-75">
+                          Contact <FaExternalLinkAlt className="text-xs" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="method-content">
-                    <h4>Visit Our Office</h4>
-                    <p>
-                      123 Tech Street, Digital City
-                      <br />
-                      Innovation District, TC 12345
-                    </p>
-                    <a href="#" className="method-link">
-                      Get Directions
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <FaPhone />
-                  </div>
-                  <div className="method-content">
-                    <h4>Call Us</h4>
-                    <p>
-                      +1 (555) 123-4567
-                      <br />
-                      Mon - Fri, 9AM - 6PM EST
-                    </p>
-                    <a href="tel:+15551234567" className="method-link">
-                      Call Now
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <FaEnvelope />
-                  </div>
-                  <div className="method-content">
-                    <h4>Email Us</h4>
-                    <p>
-                      info@fusiontech.com
-                      <br />
-                      We reply within 24 hours
-                    </p>
-                    <a
-                      href="mailto:info@fusiontech.com"
-                      className="method-link">
-                      Send Email
-                    </a>
-                  </div>
-                </div>
-
-                <div className="contact-method">
-                  <div className="method-icon">
-                    <FaComments />
-                  </div>
-                  <div className="method-content">
-                    <h4>Live Chat</h4>
-                    <p>
-                      Chat with our team
-                      <br />
-                      Available 24/7
-                    </p>
-                    <a href="#" className="method-link">
-                      Start Chat
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              <div className="social-connect">
-                <h4>Follow Us</h4>
-                <div className="social-links">
-                  <a href="#" className="social-link">
-                    <FaLinkedin />
-                  </a>
-                  <a href="#" className="social-link">
-                    <FaXTwitter />
-                  </a>
-                  <a href="#" className="social-link">
-                    <FaGithub />
-                  </a>
-                  <a href="#" className="social-link">
-                    <FaInstagram />
-                  </a>
-                  <a href="#" className="social-link">
-                    <FaYoutube />
-                  </a>
+              {/* Social Links */}
+              <div className="flex flex-col gap-2">
+                <h4 className="mb-2 text-slate-900">Follow Us</h4>
+                <div className="flex gap-3 flex-wrap">
+                  {[
+                    { icon: FaLinkedinIn, href: "#" },
+                    { icon: FaXTwitter, href: "#" },
+                    { icon: FaGithub, href: "#" },
+                  ].map((s, i) => (
+                    <a
+                      key={i}
+                      href={s.href}
+                      className="w-10.5 h-10.5 bg-accent/10 text-primary rounded-full flex items-center justify-center text-[1.0625rem] no-underline transition-all duration-250 hover:bg-primary hover:text-white">
+                      <s.icon />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -450,32 +396,70 @@ function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="faq-section">
-        <div className="container">
-          <div className="section-header" data-aos="fade-up">
-            <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-subtitle">
-              Quick answers to common questions about our services
+      <section className="py-22 bg-white">
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div className="text-center mb-14" data-aos="fade-up">
+            <h2 className="text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold mb-3.5 tracking-tight text-slate-900 max-sm:text-[1.5rem]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-[1.0625rem] text-slate-500 mb-12 max-w-140 mx-auto leading-relaxed">
+              Find answers to common questions about our services
             </p>
+            <div className="w-12 h-0.75 bg-accent rounded-full mx-auto" />
           </div>
 
-          <div className="faq-container">
-            {faqs.map((faq, index) => (
+          <div className="max-w-190 mx-auto flex flex-col gap-3">
+            {faqs.map((faq, i) => (
               <div
-                key={index}
-                ref={(el) => (faqRefs.current[index] = el)}
-                data-faq-index={index}
-                style={{ animationDelay: `${index * 0.1}s` }}
-                className={`faq-item ${visibleFaqs.has(index) ? "faq-visible" : ""} ${openFaq === index ? "active" : ""}`}>
-                <div className="faq-question" onClick={() => toggleFaq(index)}>
-                  <h4>{faq.question}</h4>
-                  <FaChevronDown />
-                </div>
-                <div className="faq-answer">
-                  <p>{faq.answer}</p>
+                key={i}
+                ref={(el) => (faqRefs.current[i] = el)}
+                data-faq-index={i}
+                className={`bg-slate-50 rounded-xl overflow-hidden border transition-all duration-250 ${visibleFaqs.has(String(i)) ? "animate-faq-fade-up" : "opacity-0"} ${openFaq === i ? "border-accent/30 shadow-sm" : "border-slate-200"}`}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="flex justify-between items-center w-full px-6 py-5.5 cursor-pointer select-none bg-transparent border-none text-left transition-colors duration-150 hover:bg-white">
+                  <h4 className="m-0 text-slate-900 text-base font-semibold pr-4">
+                    {faq.q}
+                  </h4>
+                  <FaChevronDown
+                    className={`text-accent text-sm shrink-0 transition-transform duration-250 ${openFaq === i ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <div className={`faq-answer ${openFaq === i ? "open" : ""}`}>
+                  <p className="text-slate-600 leading-[1.7] text-[0.9375rem]">
+                    {faq.a}
+                  </p>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-22 bg-slate-900 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 bg-[radial-gradient(ellipse,rgba(37,99,235,0.2)_0%,transparent_70%)] pointer-events-none" />
+        <div className="max-w-300 mx-auto px-8 max-md:px-4">
+          <div data-aos="fade-up">
+            <h2 className="text-white text-[clamp(1.75rem,3.5vw,2.75rem)] mb-4 tracking-tight">
+              Ready to Get Started?
+            </h2>
+            <p className="text-white/90 text-lg mb-8 max-w-150 mx-auto">
+              Let's discuss how we can help you achieve your business goals with
+              innovative technology solutions.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap max-sm:flex-col max-sm:w-full">
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 px-7 py-3 text-[0.9375rem] font-semibold no-underline rounded-lg transition-all duration-250 border-2 border-accent bg-accent text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)] hover:bg-accent-dark hover:border-accent-dark hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] max-sm:w-full max-sm:justify-center">
+                <FaCogs /> View Services
+              </Link>
+              <Link
+                to="/portfolio"
+                className="inline-flex items-center gap-2 px-7 py-3 text-[0.9375rem] font-semibold no-underline rounded-lg transition-all duration-250 border-2 border-white/35 bg-transparent text-white hover:bg-white/12 hover:border-white/60 hover:-translate-y-0.5 max-sm:w-full max-sm:justify-center">
+                <FaPaperPlane /> Our Portfolio
+              </Link>
+            </div>
           </div>
         </div>
       </section>
